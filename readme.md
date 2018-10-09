@@ -1,12 +1,28 @@
-# Traffic Lane Detection
-[![Build Status](https://travis-ci.org/dpiet/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/dpiet/cpp-boilerplate)
+# Smart Lane - A Traffic Lane Detection System
+[![Build Status](https://travis-ci.org/dpiet/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/dpiet/cpp-boilerplate)        
 [![Coverage Status](https://coveralls.io/repos/github/dpiet/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/dpiet/cpp-boilerplate?branch=master)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/harshkakashaniya/Traffic_Lane_Detection/blob/master/LICENSE)
 ---
 
 ## Overview
 
+Lane detection is an important aspect of self-driving vehicles. With   Acme   robotics   entering   the   autonomous   delivery   business,  delivery   vehicles   should   be   smart   enough   and   able   to   navigate   roads  effortlessly. Smart Lane is a lane detection module that can be integrated with the other modules onboard a self driving car. This project has been developed as a part of the ENPM808X-Software Development course. A quick overview of the algorithm is as follows:
+
+- Filter   and   segment   the   input   image   to   get   a   rough   estimate   of   the  lanes. 
+- Perform region of interest extraction for filtering out false positives. 
+- Perspective transformations for getting lane slopes and curves.
+- Overlay lane lines and calculate heading direction to output.
+
+## Development Process
+
+We will use Solo Iterative Process (SIP) for all the design and development purpose. The planning and development of this module has been split into two sprints of a week each. The product backlog, work log and iteration log can be found in the link below. Test Driven Development approach is taken for implementation and unit testing. 
+
+[Product Backlog](https://docs.google.com/spreadsheets/d/1fH342l1l3P8Fn3pwxwf_l3Y76kfqskcWcNobQ2caDIc/edit?usp=sharing).  
+
+## Dependencies
 Simple starter C++ project with:
 
+- OpenCV
 - cmake
 - googletest
 
@@ -44,7 +60,7 @@ git clone --recursive https://github.com/dpiet/cpp-boilerplate
 
 In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of cpp-boilerplate
 
-```
+``
 cd ~/workspace
 mkdir -p boilerplate-eclipse
 cd boilerplate-eclipse
@@ -120,7 +136,3 @@ perspetive view (or Windows->Perspective->Open Perspective->C/C++).
     Project Explorer and choose Source -> Format
 
 [reference-id-for-eclipse-cpp-google-style]: https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-cpp-google-style.xml
-
-- Git
-
-    It is possible to manage version control through Eclipse and the git plugin, but it typically requires creating another project. If you're interested in this, try it out yourself and contact me on Canvas.
