@@ -1,5 +1,5 @@
 # Smart Lane - A Traffic Lane Detection System
-[![Build Status](https://travis-ci.org/dpiet/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/dpiet/cpp-boilerplate) [![Coverage Status](https://coveralls.io/repos/github/dpiet/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/dpiet/cpp-boilerplate?branch=master) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/harshkakashaniya/Traffic_Lane_Detection/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/harshkakashaniya/Traffic_Lane_Detection.svg?branch=master)](https://travis-ci.org/harshkakashaniya/Traffic_Lane_Detection) [![Coverage Status](https://coveralls.io/repos/github/harshkakashaniya/Traffic_Lane_Detection/badge.svg?branch=master)](https://coveralls.io/github/harshkakashaniya/Traffic_Lane_Detection?branch=master) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/harshkakashaniya/Traffic_Lane_Detection/blob/master/LICENSE)
 ---
 
 ## Overview
