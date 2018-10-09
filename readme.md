@@ -4,7 +4,9 @@
 
 ## Overview
 
-Lane detection is an important aspect of self-driving vehicles. With   Acme   robotics   entering   the   autonomous   delivery   business,  delivery   vehicles   should   be   smart   enough   and   able   to   navigate   roads  effortlessly. Smart Lane is a lane detection module that can be integrated with the other modules onboard a self driving car. This project has been developed as a part of the ENPM808X-Software Development course. A quick overview of the algorithm is as follows:
+Lane detection is an important aspect of self-driving vehicles. With   Acme   robotics   entering   the   autonomous   delivery   business,  delivery   vehicles   should   be   smart   enough   and   able   to   navigate   roads  effortlessly. Smart Lane is a lane detection module that can be integrated with the other modules onboard a self driving car. This project has been developed as a part of the ENPM808X-Software Development course. 
+
+A quick overview of the algorithm is as follows:
 
 - Filter   and   segment   the   input   image   to   get   a   rough   estimate   of   the  lanes. 
 - Perform region of interest extraction for filtering out false positives. 
