@@ -1,0 +1,7 @@
+# Eclipse files
+.cproject
+.project
+.settings
+
+# Ignore folder named build
+build/
