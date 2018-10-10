@@ -4,18 +4,18 @@
 
 ## Overview
 
-Lane detection is an important aspect of self-driving vehicles. With   Acme   robotics   entering   the   autonomous   delivery   business,  delivery   vehicles   should   be   smart   enough   and   able   to   navigate   roads  effortlessly. Smart Lane is a lane detection module that can be integrated with the other modules onboard a self driving car. This project has been developed as a part of the ENPM808X-Software Development course. 
+Lane detection is an important aspect of self-driving vehicles. With   Acme   robotics   entering   the   autonomous   delivery   business,  delivery   vehicles   should   be   smart   enough   and   able   to   navigate   roads  effortlessly. Smart Lane is a lane detection module that can be integrated with the other modules onboard a self driving car. This project has been developed as a part of the ENPM808X-Software Development course for midterm project. 
 
 A quick overview of the algorithm is as follows:
 
-- Filter   and   segment   the   input   image   to   get   a   rough   estimate   of   the  lanes. 
-- Perform region of interest extraction for filtering out false positives. 
+- Filter   and   segment   the   input   image   to   get   a   rough   estimate   of   the  lanes.
+- Perform region of interest (ROI) extraction for filtering out false positives.
 - Perspective transformations for getting lane slopes and curves.
 - Overlay lane lines and calculate heading direction to output.
 
 ## Development Process
 
-We will use Solo Iterative Process (SIP) for all the design and development purpose. The planning and development of this module has been split into two sprints of a week each. The product backlog, work log and iteration log can be found in the link below. Test Driven Development approach is taken for implementation and unit testing. Work is splited into two sprints according to Priority. This will enable us to complete the project in defined time.
+We will use Solo Iterative Process (SIP) for all the design and development purpose. The planning and development of this module has been split into two sprints of a week each. The product backlog, work log and iteration log can be found in the link below. Test Driven Development approach is taken for implementation and unit testing. Work is splited into two sprints according to priority and dependency. This will enable us to complete the project in defined time.At the end we will have report of actual time and planned time difference. This will enable future ventures to plan correctly.He we can define SIP as an continous improvement process.
 
 [Product Backlog](https://docs.google.com/spreadsheets/d/1fH342l1l3P8Fn3pwxwf_l3Y76kfqskcWcNobQ2caDIc/edit?usp=sharing).  
 
@@ -47,7 +47,7 @@ SOFTWARE.
 ## Dependencies
 Simple starter C++ project with:
 
-- OpenCV
+- OpenCV - (OpenCV uses a BSD license and hence can be used for production with modification to the code.)
 - cmake
 - googletest
 
