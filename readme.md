@@ -70,7 +70,9 @@ sudo apt-get install libtiff4-dev
 # If you are using Ubuntu 16.04
 ```
 sudo apt-get install libtiff5-dev
+```
 
+```
 sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev
 sudo apt-get install libxine2-dev libv4l-dev
 sudo apt-get install libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev
