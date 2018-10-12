@@ -57,17 +57,17 @@ Update packages
 sudo apt-get update
 sudo apt-get upgrade
 ```
-# We will install required dependencies
+We will install required dependencies
 ``` 
 sudo apt-get install build-essential checkinstall cmake pkg-config yasm
 sudo apt-get install git gfortran
 sudo apt-get install libjpeg8-dev libjasper-dev libpng12-dev
  ```
-# If you are using Ubuntu 14.04
+If you are using Ubuntu 14.04
 ```
 sudo apt-get install libtiff4-dev
 ```
-# If you are using Ubuntu 16.04
+If you are using Ubuntu 16.04
 ```
 sudo apt-get install libtiff5-dev
 ```
@@ -83,13 +83,13 @@ sudo apt-get install libvorbis-dev libxvidcore-dev
 sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev
 sudo apt-get install x264 v4l-utils
  ```
-# Optional dependencies
+Optional dependencies
 ```
 sudo apt-get install libprotobuf-dev protobuf-compiler
 sudo apt-get install libgoogle-glog-dev libgflags-dev
 sudo apt-get install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen
 ```
-# Clone OpenCV and OpenCV_contrib
+Clone OpenCV and OpenCV_contrib
 ```
 git clone https://github.com/opencv/opencv.git
 cd opencv 
@@ -101,13 +101,13 @@ cd opencv_contrib
 git checkout 3.3.1
 cd ..
 ```
-## Make build directory
+Make build directory
 ```
 cd opencv
 mkdir build
 cd build
 ```
-## Run Cmake
+Run Cmake
 ```
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_INSTALL_PREFIX=/usr/local \
@@ -120,7 +120,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
       -D BUILD_EXAMPLES=ON ..
 ```
-# find out number of CPU cores in your machine
+Find out number of CPU cores in your machine
 ```
 nproc
 
@@ -130,7 +130,7 @@ sudo make install
 sudo sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/opencv.conf'
 sudo ldconfig
 ```
-## For installation related issues.
+For installation related issues.
 
 A complete OpenCV installation guide in Ubuntu can be found [here](http://www.codebind.com/cpp-tutorial/install-opencv-ubuntu-cpp/). 
 
