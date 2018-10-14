@@ -23,25 +23,54 @@
  *************************************************************************/
 
 /**
- *  Copyright 2018 Harsh Kakashaniya
- *  @file    Lane.cpp
+ *  @file    Lane.hpp
  *  @author  Harsh Kakashaniya and Rohitkrishna Nambiar
- *  @date    10/12/2018
+ *  @date    10/13/2018
  *  @version 1.0
  *
- *  @brief UMD ENPM 808X, Week 5,Midterm Project.
+ *  @brief UMD ENPM 808X, Week 6, Midterm Project
  *
- *  @Description DESCRIPTION
+ *  @section DESCRIPTION
  *
- *  Class member functions for LaneDetectionModule.cpp
+ *  Implementation to lane detection system when a video is provided
+ *  it gives output of Drive heading and lane on video.
  *
  */
 
-#include "LaneDetectionModule.hpp"
-#include "Lane.h"
+#ifndef TRAFFIC_LANE_H_
+#define TRAFFIC_LANE_H_
 #include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <opencv2/opencv.hpp>
 
-  int main() {
-  // TODO(harshkakashaniya) Call required classes and print required values.
-  return 0;
-}
+class Lane {
+ public:
+/**
+ *   @brief Default constructor for Lane
+ *          with ployorder,colour,polyCoeff,startCoordinate,status
+ *          random values
+ *
+ *   @param nothing
+ *   @return nothing
+ */
+	Lane();
+/**
+ *   @brief Default destructor for Lane
+ *   @param nothing
+ *   @return nothing
+ */
+	~Lane();
+	int polyOrder;	// declare integer for order of line.
+	std::string colour;  //set RGB values for colour.
+	std::vector <double> polyCoeff;  // Coefficients for equation
+	cv::Point startCoordinates;  //Reference coordinates for line.
+	bool status;  //for status for program.
+
+
+
+
+};
+
+#endif /* TRAFFIC_LANE_H_ */
