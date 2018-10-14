@@ -1,11 +1,12 @@
 set(GTEST_SHUFFLE 1)
 
 add_executable(
-    cpp-test
+    smartLane-test
     main.cpp
-    test.cpp
+    LaneDetectionModuleTest.cpp
+    ../app/LaneDetectionModule.cpp
 )
 
-target_include_directories(cpp-test PUBLIC ../vendor/googletest/googletest/include 
+target_include_directories(smartLane-test PUBLIC ../vendor/googletest/googletest/include 
                                            ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(cpp-test PUBLIC gtest)
+target_link_libraries(smartLane-test PUBLIC gtest ${OpenCV_LIBS})

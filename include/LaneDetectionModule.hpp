@@ -22,20 +22,28 @@
 #include <opencv2/opencv.hpp>
 #include "Lane.h"
 
-
-
 class LaneDetectionModule {
 public:
-	  /**
-	   *   @brief Default constructor for LaneDetectionModule
-	   *
-	   *
-	   *   @param nothing
-	   *   @return nothing
-	   */
 
-	LaneDetectionModule();
-	  /**
+  /**
+   *   @brief Default constructor for LaneDetectionModule
+   *
+   *
+   *   @param nothing
+   *   @return nothing
+   */
+  LaneDetectionModule();
+
+  /**
+   *   @brief Default destructor for LaneDetectionModule
+   *
+   *
+   *   @param nothing
+   *   @return nothing
+   */
+  ~LaneDetectionModule();
+
+  /**
 	   *   @brief Method Undistortedimage for LaneDetectionModule
 	   *
 	   *
@@ -43,9 +51,9 @@ public:
 	   *   @param dst is a Matrix of destination of image
 	   *   @return nothing
 	   */
-
 	void undistortImage(const cv::Mat& src,cv::Mat& dst);
-	  /**
+
+  /**
 	   *   @brief Method thresholdImageY to set
 	   *   		  yellow threshold image for LaneDetectionModule
 	   *
@@ -55,7 +63,8 @@ public:
 	   *   @return nothing
 	   */
 	void thresholdImageY(const cv::Mat& src,cv::Mat& dst);
-	  /**
+
+  /**
 	   *   @brief Method thresholdImageW to set
 	   *   		white threshold image for LaneDetectionModule
 	   *
@@ -65,7 +74,8 @@ public:
 	   *   @return nothing
 	   */
 	void thresholdImageW(const cv::Mat& src,cv::Mat& dst);
-	  /**
+
+  /**
 	   *   @brief Method extractROI to set
 	   *   		  region of interest for LaneDetectionModule
 	   *
@@ -88,7 +98,8 @@ public:
 	   *   @return nothing
 	   */
 	void extractLanes(const cv::Mat& src,Lane& lane1,Lane& lane2,int curveFlag);
-	  /**
+
+  /**
 	   *   @brief Method getDriveHeading to calculate
 	   *   		  drive heading to be given to actuator for further action
 	   *   		  in LaneDetectionModule.
@@ -98,7 +109,8 @@ public:
 	   *   @return double value of drive head.
 	   */
 	double getDriveHeading(Lane& lane1,Lane& lane2);
-	  /**
+
+  /**
 	   *   @brief Method displayOutput to calculate
 	   *   		  to display of the system
 	   *   		  for LaneDetectionModule.
@@ -110,52 +122,53 @@ public:
 	   *   @return nothing
 	   */
 	void displayOutput(const cv::Mat& src,Lane& lane1,Lane& lane2,double heading);
-	  /**
+
+  /**
 	   *   @brief Method detectLane check if program is successfully running
 	   *   		  gives bool output for LaneDetectionModule
 	   *
 	   *   @param videoName is video of source
 	   *   @return bool for code working.
 	   */
-
 	bool detectLane(std::string videoName);
-	  /**
+
+  /**
 	   *   @brief Method getYellowMax is to use get max value of yellow
 	   *   for LaneDetectionModule
 	   *
 	   *   @param nothing
 	   *   @return Scalar of RGB set values.
 	   */
-
 	cv::Scalar getYellowMax();
-	  /**
+
+  /**
 	   *   @brief Method getYellowMin is to use get min value of yellow
 	   *   for LaneDetectionModule
 	   *
 	   *   @param nothing
 	   *   @return Scalar of RGB set values.
 	   */
-
 	cv::Scalar getYellowMin();
-	  /**
+
+  /**
 	   *   @brief Method setYellowMax is to use set max value of yellow
 	   *   for LaneDetectionModule
 	   *
 	   *   @param  Scalar of RGB values
 	   *   @return nothing.
 	   */
+  void setYellowMax(cv::Scalar value);
 
-	void setYellowMax(cv::Scalar);
-	  /**
+  /**
 	   *   @brief Method setYellowMin is to use set min value of yellow
 	   *   for LaneDetectionModule
 	   *
 	   *   @param  Scalar of RGB values
 	   *   @return nothing.
 	   */
+  void setYellowMin(cv::Scalar value);
 
-	void setYellowMin(cv::Scalar);
-	 /**
+  /**
 	   *   @brief Method setGrayScaleMax is to use set max value of Gray scale
 	   *   value for LaneDetectionModule
 	   *
@@ -163,7 +176,8 @@ public:
 	   *   @return nothing.
 	   */
 	void setGrayScaleMax(int value);
-	  /**
+
+  /**
 	   *   @brief Method setGrayScaleMin is to use set min value of Gray scale
 	   *   value for LaneDetectionModule
 	   *
@@ -171,7 +185,8 @@ public:
 	   *   @return nothing.
 	   */
 	void setGrayScaleMin(int value);
-	  /**
+
+  /**
 	   *   @brief Method getGrayScaleMin is to use get min value of GrayScale
 	   *   for LaneDetectionModule
 	   *
@@ -179,7 +194,8 @@ public:
 	   *   @return int of GrayScale values
 	   */
 	int getGrayScaleMin();
-	  /**
+
+  /**
 	   *   @brief Method getGrayScaleMax is to use get max value of GrayScale
 	   *   for LaneDetectionModule
 	   *
@@ -188,24 +204,12 @@ public:
 	   */
 	int getGrayScaleMax();
 
-
-
 private:
 	cv::Scalar yellowMin;  // max possible RGB values of yellow
 	cv::Scalar yellowMax;  // min possible RGB values of yellow
 	int grayscaleMin;  // min possible grayscale value for white in our video
 	int grayscaleMax;  // max possible grayscale value for white in our video
 	std::string videoName;  // specify video name
-
-	  /**
-	   *   @brief Default destructor for LaneDetectionModule
-	   *
-	   *
-	   *   @param nothing
-	   *   @return nothing
-	   */
-	virtual ~LaneDetectionModule();
 };
 
 #endif /* LANEDETECTIONMODULE_H_ */
-s
