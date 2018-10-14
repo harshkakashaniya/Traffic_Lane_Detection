@@ -14,7 +14,7 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 if (COVERAGE)
     include(CodeCoverage)
     set(LCOV_REMOVE_EXTRA "'vendor/*'")
-    setup_target_for_coverage(code_coverage test/cpp-test coverage)
+    setup_target_for_coverage(code_coverage test/smartLane-test coverage)
     set(COVERAGE_SRCS app/main.cpp include/lib.hpp)
 
     SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
