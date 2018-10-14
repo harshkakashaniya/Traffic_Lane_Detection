@@ -13,7 +13,7 @@
  *
  */
 
-#include "LaneDetectionModule.h"
+#include "LaneDetectionModule.hpp"
 #include "Lane.h"
 #include <iostream>
 
