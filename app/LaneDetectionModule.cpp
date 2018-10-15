@@ -78,8 +78,14 @@ LaneDetectionModule::~LaneDetectionModule() {
  *   @return nothing
  */
 void LaneDetectionModule::undistortImage(const cv::Mat& src, cv::Mat& dst) {
-  // TODO(harshkakashniya): Given image to be undistorted so that we get
-  // proper analysis.
+  cv::Mat cameraMatrix =
+      (cv::Mat_<double>(3, 3) << 1154.22732, 0.0,
+ 671.627794, 0.0, 1148.18221, 386.046312, 0.0, 0.0, 1.0);
+
+  std::vector<double> distortionCoeff { -.242565104, -0.0477893070,
+      -0.00131388084, -0.0000879107779, 0.0220573263 };
+
+  cv::undistort(src, dst, cameraMatrix, distortionCoeff);
 }
 
 /**
@@ -92,8 +98,11 @@ void LaneDetectionModule::undistortImage(const cv::Mat& src, cv::Mat& dst) {
  *   @return nothing
  */
 void LaneDetectionModule::thresholdImageY(const cv::Mat& src, cv::Mat& dst) {
-  // TODO(harshkakashniya): find yellow lane in the image with setting
-  // RGB values.
+  // Image to HLS type image for decreasing effect of light intensity.
+  cv::cvtColor(src, dst, cv::COLOR_BGR2HLS);
+
+  // use white thresholding values to detect only road lanes
+  cv::inRange(dst, yellowMin, yellowMax, dst);
 }
 
 /**
@@ -106,8 +115,11 @@ void LaneDetectionModule::thresholdImageY(const cv::Mat& src, cv::Mat& dst) {
  *   @return nothing
  */
 void LaneDetectionModule::thresholdImageW(const cv::Mat& src, cv::Mat& dst) {
-  // TODO(harshkakashniya): find white lane in the image with setting
-  // grayscalevalue.
+  // Convert to grayscale image
+  cv::cvtColor(src, dst, cv::COLOR_RGB2GRAY);
+
+  // use white thresholding values to detect only road lanes
+  cv::inRange(dst, grayscaleMin, grayscaleMax, dst);
 }
 
 /**
@@ -120,8 +132,21 @@ void LaneDetectionModule::thresholdImageW(const cv::Mat& src, cv::Mat& dst) {
  *   @return nothing
  */
 void LaneDetectionModule::extractROI(const cv::Mat& src, cv::Mat& dst) {
-  // TODO(harshkakashniya): find area on interest where lanes can be found
-  // so that other errors can be minimized.
+  int width = src.cols;  // width of recieved frame.
+  int height = src.rows;  // height of recieved frame.
+
+//  mask matrix initialized as zero Matrix of Height and Width of frame matrix.
+  cv::Mat mask = cv::Mat::zeros(height, width, CV_8U);
+  // Make corners points for the mask.
+  cv::Point pts[4] = { cv::Point(0, height), cv::Point(width / 2 - 100,
+                                                       height / 2 + 50),
+      cv::Point(width / 2 + 100, height / 2 + 50), cv::Point(width, height) };
+
+  // Create a polygon
+  cv::fillConvexPoly(mask, pts, 4, cv::Scalar(255));
+
+  // And the source thresholded image and mask
+  bitwise_and(src, mask, dst);
 }
 
 /**
@@ -192,7 +217,6 @@ bool LaneDetectionModule::detectLane(std::string videoName) {
  *   @return Scalar of RGB set values.
  */
 cv::Scalar LaneDetectionModule::getYellowMax() {
-  // TODO(harshkakashniya): to get RGB max values for yellow.
   return yellowMax;
 }
 
