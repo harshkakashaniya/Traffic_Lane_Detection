@@ -38,7 +38,7 @@
  */
 
 #include "LaneDetectionModule.hpp"
-#include "Lane.h"
+#include "Lane.hpp"
 #include <iostream>
 
   int main() {

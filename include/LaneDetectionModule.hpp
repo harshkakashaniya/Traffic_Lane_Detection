@@ -43,7 +43,7 @@
 #include <string>
 #include <algorithm>
 #include <opencv2/opencv.hpp>
-#include "Lane.h"
+#include "Lane.hpp"
 
 class LaneDetectionModule {
 public:
