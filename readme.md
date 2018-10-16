@@ -185,7 +185,8 @@ cd build
 cmake ..
 make
 Run tests: ./test/smartLane-test
-Run program: ./app/shell-app
+Run program: ./app/shell-app ../input/project_video.mp4
+
 ```
 
 ## Building for code coverage
