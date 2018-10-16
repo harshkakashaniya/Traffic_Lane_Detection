@@ -12,10 +12,47 @@ A quick overview of the algorithm is as follows:
 - Perform region of interest (ROI) extraction for filtering out false positives.
 - Perspective transformations for getting lane slopes and curves.
 - Overlay lane lines and calculate heading direction to output.
+- Provides display of DriveHeading to the actuator to move in right, left, or straight. 
+- Output is an video which will show the area inside the lane and will assist controller to move the mechanism to right or left.
+ 
+## Algorithm Process and Output Results 
+
+This software project enables us to use data from camera of any car and provide lane assistance to the controller. It takes in colorful image of road and surrounding. And provides output of turning angle lane detection and turning side. It takes input image as follows.
+
+<Colourful frame  image>
+
+This input frame is first undistorted. Later this image processes the yellow lane on the left by converting whole image into HSV (to reduce effect of change in ambient light). Then it takes in yellow color values. With which it compares values of all pixels in the image. And we get the following output.
+
+<Image with yellow lane>
+
+Additionally, we convert original image to gray scale image and then find white lane. Output of white is shown as below.
+
+< Image with white lane >
+
+We merge both the images and get resultant image. Now if we define our region of interest we will be able to eliminate noise above lower half. This is be the fact that lane can not go above half the area.
+
+<Resultant image with ROI>
+
+And finally, after getting points we plot polygon curves where other elements of matrix(Mask matrix) are zero and elements under polygon are 1's To get our desired Region of interest we do bitwise_And so that final matrix will have white elements inside the ROI only. So final output of a frame will be as shown.
+
+<See the output without background frame>
+
+
+On terminal, We will get drive angle and action to be taken. Terminal output is the output to the terminal. Which is shown as below.
+
+<Terminal picture>
+
+Hence, with the help of lanes we can control car and give directions to driver or actuator for automatic cars. Hence, in output we get driveheading in angle of turning and assistance on video frame.
+
+<Final output with all the frames.>
+
+
+
 
 ## Development Process
 
 We will use Solo Iterative Process (SIP) for all the design and development purpose. The planning and development of this module has been split into two sprints of a week each. The product backlog, work log and iteration log can be found in the link below. Test Driven Development approach is taken for implementation and unit testing. Work is splited into two sprints according to priority and dependency. This will enable us to complete the project in defined time.At the end we will have report of actual time and planned time difference. This will enable future ventures to plan correctly.He we can define SIP as an continous improvement process.
+
 
 [Product Backlog](https://docs.google.com/spreadsheets/d/1fH342l1l3P8Fn3pwxwf_l3Y76kfqskcWcNobQ2caDIc/edit?usp=sharing).  
 
@@ -143,7 +180,7 @@ mkdir build
 cd build
 cmake ..
 make
-Run tests: ./test/cpp-test
+Run tests: ./test/smartLane-test
 Run program: ./app/shell-app
 ```
 
