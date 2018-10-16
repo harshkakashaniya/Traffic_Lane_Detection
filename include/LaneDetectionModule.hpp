@@ -43,6 +43,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <numeric>
 #include <chrono>
 #include <thread>
 #include <cmath>
