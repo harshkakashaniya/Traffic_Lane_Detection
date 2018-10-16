@@ -1,7 +1,7 @@
 /************************************************************************
  MIT License
 
- Copyright (c) 2018 Harsh Kakashaniya,Rohitkrishna Nambiar
+ Copyright (c) 2018 Harsh Kakashaniya, Rohitkrishna Nambiar
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -39,6 +39,7 @@
 
 #ifndef TRAFFIC_LANE_H_
 #define TRAFFIC_LANE_H_
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -47,30 +48,93 @@
 
 class Lane {
  public:
-/**
- *   @brief Default constructor for Lane
- *          with ployorder,colour,polyCoeff,startCoordinate,status
- *          random values
- *
- *   @param nothing
- *   @return nothing
- */
+  /**
+   *  @brief Default constructor for Lane
+   *        with ployorder,colour,polyCoeff,startCoordinate,status
+   *        random values
+   */
 	Lane();
-/**
- *   @brief Default destructor for Lane
- *   @param nothing
- *   @return nothing
- */
+
+  /**
+   *  @brief Default constructor for Lane
+   *          with ployorder,colour,polyCoeff,startCoordinate,status
+   *          random values
+   *
+   *  @param polyOrder is order of fitting polynomial
+   *  @param color is the color of lane
+   *  @param averagingCount number of values to average
+   */
+  Lane(int polyOrder, std::string color, int averagingCount);
+
+  /**
+   *  @brief Default destructor for Lane class
+   */
 	~Lane();
-	int polyOrder;	// declare integer for order of line.
-	std::string colour;  //set RGB values for colour.
-	std::vector <double> polyCoeff;  // Coefficients for equation
-	cv::Point startCoordinates;  //Reference coordinates for line.
-	bool status;  //for status for program.
 
+  /*
+   *  @brief Calculates the center x-coordinate averageof the first sliding
+   *        window
+   *
+   *  @param coordinate is current x-center co-ordinate
+   *
+   *  @return averaged x-coordinate
+   */
+  int getStableCenter(int coordinate);
 
+  /*
+   *  @brief Sets the center coordinate of the first sliding window
+   *
+   *  @param point is current center co-ordinate
+   *
+   */
+  void setStartCoordinate(cv::Point point);
 
+  /*
+   *  @brief Gets the center coordinate of the first sliding window
+   *
+   *  @return Center coordinate of the first sliding window(lane)
+   */
+  cv::Point getStartCoordinate();
 
+  /*
+   *  @brief Sets the status of lane
+   *
+   *  @param flag is the status of the lane if polynomial found
+   */
+  void setStatus(bool flag);
+
+  /*
+   *  @brief Gets the status of lane
+   *
+   *  @return status of the lane
+   */
+  bool getStatus();
+
+  /*
+   *  @brief Sets the polynomial coeff of lane
+   *
+   *  @param coeff is a Mat(1x3) object containing coefficients
+   */
+  void setPolyCoeff(cv::Mat coeff);
+
+  /*
+   *  @brief Gets the polynomial coeff of lane
+   *
+   *  @return vector containing coefficients
+   */
+  std::vector<float> getPolyCoeff();
+
+ private:
+  int polyOrder;  // declare integer for order of line.
+  std::string colour;  //set RGB values for lane colour.
+  std::vector<float> polyCoeff;  // Coefficients for equation
+  cv::Point startCoordinates;  //Reference coordinates for line.
+
+  // Average center to prevent jumps for entire run
+  std::vector<int> averagingCenter;
+  int averagingCount;
+  int currentAveragingIndex;
+  bool status;  //for status for program.
 };
 
 #endif /* TRAFFIC_LANE_H_ */
