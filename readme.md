@@ -17,41 +17,41 @@ A quick overview of the algorithm is as follows:
  
 ## Algorithm Process and Output Results 
 
-This software project enables us to use data from camera of any car and provide lane assistance to the controller. It takes in colorful image of road and surrounding. And provides output of turning angle lane detection and turning side. It takes input image as follows.
+This software project enables us to use data from camera of any car and provide lane assistance to the controller. It takes in colorful image of road and surrounding. And provides output of turning angle, lane detection and turning side. It takes input image as follows.
 
-![](Images/ColorImage.jpg)
+![](images/ColorImage.jpg)
 
 This input frame is first undistorted. Later this image processes the yellow lane on the left by converting whole image into HSV (to reduce effect of change in ambient light). Then it takes in yellow color values. With which it compares values of all pixels in the image. And we get the following output.
 
-<Image with yellow lane>
+![](images/YellowThreshold.jpg)
 
 Additionally, we convert original image to grayscale image and then find white lane. Output of white lane is shown below.
 
-![](Images/WhiteThresholdImage.jpg)
+![](images/WhiteThresholdImage.jpg)
 
 We merge both the images and get resultant image. Now if we define our region of interest we will be able to eliminate noise above lower half. This is be the fact that lane can not go above half the area.
 
-![](Images/CombinedThresholdImage.jpg)
+![](images/CombinedThresholdImage.jpg)
 
 And finally, after getting points we plot polygon curves where other elements of matrix(Mask matrix) are zero and elements under polygon are 1's To get our desired Region of interest we do bitwise_And so that final matrix will have white elements inside the ROI only. So final output of a frame will be as shown.
 
-![](Images/ROIImage.jpg)
+![](images/ROIImage.jpg)
 
 To calculate exact angles we need do transformation so that we can see Lane parallel and can calculated exact angles for driveheading and which will give correct angles to controller to stear right or left.
 
-![](Images/SlidingWindow.jpg)
+![](images/SlidingWindow.jpg)
 
 We use sliding window method to find both lane points through out the frame to calculate lines . So output of this method is shown as below. Here in image we can see line plotted with the help of points.
 
-![](Images/LanesPerspective.jpg)
+![](images/LanesPerspective.jpg)
 
 On terminal, We will get drive angle and action to be taken. Terminal output is actually output to the controller. This program will run and our car actuators will follow stear accordingly so that the car remains inside the lane .As shown in image.  
 
-<Terminal picture>
+![](images/Terminal.jpg)
 
 Hence, with the help of lanes we can control car and give directions to driver or actuator for automatic cars. Hence, in output we get driveheading in angle of turning and assistance on video frame.
 
-![](Images/FinalOutput.jpg)
+![](images/FinalOutput.jpg)
 
 ## Development Process
 
