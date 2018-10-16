@@ -47,7 +47,7 @@
  *   @return nothing
  */
 Lane::Lane() {
-  std::cout << "Default constructor called" << std::endl;
+//  std::cout << "Default constructor called" << std::endl;
   polyOrder = 1;
   colour = "red";
   averagingCount = 10;
@@ -65,9 +65,9 @@ Lane::Lane() {
  *   @param averagingCount number of values to average
  */
 Lane::Lane(int polyOrder, std::string color, int averagingCount) {
-  std::cout << "Lane created with the following values: Polyorder: "
-            << polyOrder << " Color: " << color << " averaging count: "
-            << averagingCount << std::endl;
+//  std::cout << "Lane created with the following values: Polyorder: "
+//            << polyOrder << " Color: " << color << " averaging count: "
+//            << averagingCount << std::endl;
   this->polyOrder = polyOrder;
   this->colour = color;
   this->averagingCount = averagingCount;
@@ -167,4 +167,22 @@ bool Lane::getStatus() {
  */
 std::vector<float> Lane::getPolyCoeff() {
   return polyCoeff;
+}
+
+/*
+ *  @brief Sets the polyOrder of lane
+ *
+ *  @param value is the polyorder of lane
+ */
+void Lane::setPolyOrder(int value) {
+  polyOrder = value;
+}
+
+/*
+ *  @brief Gets the polyOrder of lane
+ *
+ *  @return value is the polyorder of lane
+ */
+int Lane::getPolyOrder() {
+  return polyOrder;
 }

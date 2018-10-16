@@ -23,31 +23,45 @@
  *************************************************************************/
 
 /**
- *  Copyright 2018 Harsh Kakashaniya
- *  @file    Lane.cpp
- *  @author  Harsh Kakashaniya and Rohitkrishna Nambiar
- *  @date    10/12/2018
- *  @version 1.0
+ * @file    LaneTest.cpp
+ * @author  Rohitkrishna Nambiar (rohit517)
+ * @date    10/10/2018
+ * @version 1.0
  *
- *  @brief UMD ENPM 808X, Week 5,Midterm Project.
+ * @brief   Program to test LaneDetectionModule class.
  *
- *  @Description DESCRIPTION
+ * @section DESCRIPTION
  *
- *  Class member functions for LaneDetectionModule.cpp
- *
+ * This is a program that tests LaneDetectionModule class.
  */
 
-#include "LaneDetectionModule.cpp"
+#include <gtest/gtest.h>
+#include "Lane.hpp"
+#include "opencv2/opencv.hpp"
 
-int main(int argc, char* argv[]) {
-  LaneDetectionModule lm;
+// Lane module object
+Lane laneTest;
 
-  if (argc != 2)
-    std::cout
-        << "Did not receive video location as argument. Format: ./app/shell-app ../input/project-video.mp4"
-        << std::endl;
-  std::cout << "Starting lane detection with video: " << argv[1] << std::endl;
-  bool status = lm.detectLane(argv[1]);
-  std::cout << "Smartlane executed with status: " << status << std::endl;
-  return 0;
+/**
+ *  @brief Lane Constructor Test.
+ *
+ *  @param ConstructorTest  Constructor test
+ *  @param EmptyConstructor Name of the unit test
+ */
+TEST(LaneConstructorTest, EmptyConstructor) {
+  int polyOrder = laneTest.getPolyOrder();
+  ASSERT_EQ(polyOrder, 1);
 }
+
+/**
+ *  @brief Custom Lane Constructor Test.
+ *
+ *  @param ConstructorTest    Constructor test
+ *  @param CustomConstructor  Name of the unit test
+ */
+TEST(LaneConstructorTest, CustomConstructor) {
+  Lane laneCustom(2, "blue", 10);
+  int polyOrder = laneCustom.getPolyOrder();
+  ASSERT_EQ(polyOrder, 2);
+}
+

@@ -111,6 +111,20 @@ class Lane {
   bool getStatus();
 
   /*
+   *  @brief Sets the polyOrder of lane
+   *
+   *  @param value is the polyorder of lane
+   */
+  void setPolyOrder(int value);
+
+  /*
+   *  @brief Gets the polyOrder of lane
+   *
+   *  @return value is the polyorder of lane
+   */
+  int getPolyOrder();
+
+  /*
    *  @brief Sets the polynomial coeff of lane
    *
    *  @param coeff is a Mat(1x3) object containing coefficients

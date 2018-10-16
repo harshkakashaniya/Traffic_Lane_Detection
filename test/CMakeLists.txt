@@ -4,6 +4,7 @@ add_executable(
     smartLane-test
     main.cpp
     LaneDetectionModuleTest.cpp
+    LaneTest.cpp
     ../app/LaneDetectionModule.cpp
 )
 

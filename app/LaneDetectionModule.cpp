@@ -586,6 +586,8 @@ void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
               cv::FONT_HERSHEY_SIMPLEX, 0.8, cv::Scalar(255, 255, 255), 2);
   cv::putText(unwarpedColor, direction, cv::Point(550, 100),
               cv::FONT_HERSHEY_SIMPLEX, 0.8, cv::Scalar(255, 255, 255), 2);
+  cv::putText(unwarpedColor, "Press C to exit.", cv::Point(1000, 50),
+              cv::FONT_HERSHEY_SIMPLEX, 0.8, cv::Scalar(0, 0, 255), 2);
 
   imshow("Lane Detection", unwarpedColor);
 }
@@ -601,8 +603,9 @@ void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
 bool LaneDetectionModule::detectLane(std::string videoName) {
   cv::VideoCapture cap(videoName);  // open the default camera
   if (!cap.isOpened())  // check if we succeeded
-    return -1;
+    return 0;
 
+  std::cout << "Starting Smartlane..." << std::endl;
   cv::namedWindow("Lane Detection", 1);
 
   Lane leftLane(2, "red", 10), rightLane(2, "green", 10);
@@ -664,8 +667,9 @@ bool LaneDetectionModule::detectLane(std::string videoName) {
     if (cv::waitKey(30) >= 0)
       break;
   }
-  // the camera will be deinitialized automatically in VideoCapture destructor
-  return 0;
+  // the camera will be deinitialized automatically in VideoCapture destructor. If
+  // Everything works without error, return true.
+  return true;
 }
 
 /**
