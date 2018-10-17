@@ -199,6 +199,28 @@ make code_coverage
 ```
 This generates a index.html page in the build/coverage sub-directory that can be viewed locally in a web browser.
 
+## Doxygen Documentation
+
+Doxygen Documentation generation steps:
+```
+cd <path to repository>
+mkdir Doxygen
+cd Doxygen
+doxygen -g <config_file_name>
+```
+
+Open configuration file and update the following:
+
+```
+PROJECT_NAME = 'your project name'
+INPUT = ../LaneDetector ../include ../test
+```
+
+Run and generate the documents by running the next command:
+```
+doxygen <config_file_name>
+```
+
 ## Working with Eclipse IDE ##
 
 ## Installation

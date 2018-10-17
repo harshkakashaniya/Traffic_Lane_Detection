@@ -36,10 +36,14 @@
  */
 
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include "LaneDetectionModule.hpp"
 #include "opencv2/opencv.hpp"
 
-// LaneDetectionModule module object
+using ::testing::AtLeast;
+using ::testing::Return;
+using ::testing::_;
+// Lane module object
 LaneDetectionModule laneModule;
 
 /**
@@ -128,30 +132,44 @@ TEST(GetSetTest, SetYellowMin) {
  *@param GetSetTest       Get set function test
  *@param SetYellowMax     Name of the unit test
  */
-TEST(GetSetTest, SetYellowMax) {
+/*TEST(GetSetTest, SetYellowMax) {
   laneModule.setYellowMax(cv::Scalar(150, 150, 150));
   cv::Scalar highTheshold = laneModule.getYellowMax();
   ASSERT_EQ(highTheshold, cv::Scalar(150, 150, 150));
 }
+/*
+// Google mock for other functions..
+class Mock_LD : public LaneDetectionModule {
+public:
+MOCK_METHOD2(undistortImage , void(const cv::Mat& src, cv::Mat& dst));
+};
 
-/**
- *@brief Test for single image execution..
- *
- *@param FunctionalTest   Get set function test
- *@param TestImage        Name of the unit test
- */
-TEST(FunctionalTest, TestImage) {
-  bool status = laneModule.detectLane("../input/ColorImage.jpg");
-  ASSERT_EQ(status, true);
-}
+class MyLaneDetection {
+  LaneDetectionModule & LDM;
+public:
+  MyLaneDetection(LaneDetectionModule & LDM): LDM(_LDM);{}
 
-/**
- *@brief Test for false image path.
- *
- *@param FunctionalTest     Get set function test
- *@param TestFalseImagePath Name of the unit test
- */
-TEST(FunctionalTest, TestFalseImagePath) {
-  bool status = laneModule.detectLane("../input/ColorImage1.jpg");
-  ASSERT_EQ(status, false);
+void undisto(_,_);
+};
+
+TEST(GetSetTest,undistortImage);
+//Arrange
+cv::Mat A,B;
+//float data1[2][2] = {{1,1},{1,1}};
+//float data2[2][2] = {{2,2},{2,2}};
+//A=Mat(2,2,CV_32FC1, &data1, 2);
+//B=Mat(2,2,CV_32FC1, &data2, 2);
+
+MOCK_LD MLD;
+LaneDetectionModule LaneDM(MLD);
+//ACT
+int undistort=LaneDM.undisto(A,B);
+//ASSERT
+ASSERT_EQ(undistort,0);
+*/
+
+TEST(FunctionTest, undistort) {
+
+  cv::Scalar dst = laneModule.();
+  ASSERT_EQ(lowTheshold, cv::Scalar(50, 50, 50));
 }
