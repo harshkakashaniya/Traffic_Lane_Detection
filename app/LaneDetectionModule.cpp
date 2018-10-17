@@ -611,10 +611,11 @@ bool LaneDetectionModule::detectLane(std::string videoName) {
   for (;;) {
     cv::Mat frame, whiteThreshold, yellowThreshold, combinedThreshold,
         distColor, gaussianBlurImage, ROIImage, warpedImage, undistortedImage,
-        laneColor;
+        laneColor, finalOutput;
     cap >> frame;
 
     if (frame.empty()) {
+      cap.release();
       return true;
     }
 
@@ -654,7 +655,8 @@ bool LaneDetectionModule::detectLane(std::string videoName) {
     extractLanes(warpedImage, laneColor, leftLane, rightLane, 2);
 
     // Step 7: Display the output
-    displayOutput(laneColor, frame, leftLane, rightLane, invtransformMatrix);
+    displayOutput(laneColor, frame, leftLane, rightLane,
+                  invtransformMatrix);
 
     // Display routine
     cv::Mat combined;
@@ -666,6 +668,7 @@ bool LaneDetectionModule::detectLane(std::string videoName) {
   }
   // the camera will be deinitialized automatically in VideoCapture destructor. If
   // Everything works without error, return true.
+  cap.release();
   return true;
 }
 

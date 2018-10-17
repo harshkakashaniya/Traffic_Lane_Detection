@@ -65,3 +65,61 @@ TEST(LaneConstructorTest, CustomConstructor) {
   ASSERT_EQ(polyOrder, 2);
 }
 
+/**
+ *  @brief PolyOrder getset Test.
+ *
+ *  @param GetSetTest       Unit test
+ *  @param polyOrderGetSet  Name of the unit test
+ */
+TEST(GetSetTest, polyOrderGetTest) {
+  Lane laneTest2;
+  laneTest2.setPolyOrder(3);
+  int polyOrder = laneTest2.getPolyOrder();
+  ASSERT_EQ(polyOrder, 3);
+}
+
+/**
+ *  @brief Start-Coordinate getset Test.
+ *
+ *  @param GetSetTest       Unit test
+ *  @param startCoodGetTest Name of the unit test
+ */
+TEST(GetSetTest, startCoodGetTest) {
+  Lane laneTest2;
+  laneTest2.setStartCoordinate(cv::Point(30, 50));
+  cv::Point point = laneTest2.getStartCoordinate();
+  ASSERT_EQ(point.x, 30);
+  ASSERT_EQ(point.y, 50);
+}
+
+/**
+ *  @brief Status getset Test.
+ *
+ *  @param GetSetTest       Unit test
+ *  @param startCoodGetTest Name of the unit test
+ */
+TEST(GetSetTest, statusGetTest) {
+  Lane laneTest2;
+  laneTest2.setStatus(true);
+  bool status = laneTest2.getStatus();
+  ASSERT_EQ(status, true);
+}
+
+/**
+ *  @brief PolyCoeff getset Test.
+ *
+ *  @param GetSetTest       Unit test
+ *  @param startCoodGetTest Name of the unit test
+ */
+TEST(GetSetTest, polyCoeffGetTest) {
+  Lane laneTest2;
+  cv::Mat laneCoeff = (cv::Mat_<float>(3, 1) << 1.2, 0.0, 5.6);
+  laneTest2.setPolyCoeff(laneCoeff);
+  std::vector<float> coeffOut = laneTest2.getPolyCoeff();
+  ASSERT_NEAR(1.2, coeffOut[0], 0.1);
+  ASSERT_NEAR(0.0, coeffOut[1], 0.1);
+  ASSERT_NEAR(5.6, coeffOut[2], 0.1);
+}
+
+
+
