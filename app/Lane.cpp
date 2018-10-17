@@ -139,7 +139,6 @@ void Lane::setPolyCoeff(cv::Mat laneCoeff) {
   } else {
     std::cout << "Could not insert new elements!" << std::endl;
   }
-
 }
 
 /*

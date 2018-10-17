@@ -36,28 +36,25 @@
  *
  */
 
-#ifndef LANEDETECTIONMODULE_H_
-#define LANEDETECTIONMODULE_H_
+#ifndef INCLUDE_LANEDETECTIONMODULE_HPP_
+#define INCLUDE_LANEDETECTIONMODULE_HPP_
 
 #include <iostream>
 #include <vector>
 #include <string>
 #include <algorithm>
 #include <numeric>
-#include <chrono>
-#include <thread>
 #include <cmath>
 #include <opencv2/opencv.hpp>
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
-#include "opencv2/opencv.hpp"
 #include "opencv2/features2d/features2d.hpp"
 #include "opencv2/calib3d/calib3d.hpp"
 #include "Lane.hpp"
 
 class LaneDetectionModule {
-public:
+ public:
   /**
    *   @brief Default constructor for LaneDetectionModule
    *
@@ -76,7 +73,7 @@ public:
    *   @param src is a Matrix of source of image
    *   @param dst is a Matrix of destination of image
    */
-	void undistortImage(const cv::Mat& src,cv::Mat& dst);
+  void undistortImage(const cv::Mat& src, cv::Mat& dst);
 
   /**
    *   @brief Method thresholdImageY to set
@@ -85,7 +82,7 @@ public:
    *   @param src is a Matrix of source of image
    *   @param dst is a Matrix of destination of imageg
    */
-	void thresholdImageY(const cv::Mat& src,cv::Mat& dst);
+  void thresholdImageY(const cv::Mat& src, cv::Mat& dst);
 
   /**
    *   @brief Method thresholdImageW to set
@@ -94,7 +91,7 @@ public:
    *   @param src is a Matrix of source of image
    *   @param dst is a Matrix of destination of image
    */
-	void thresholdImageW(const cv::Mat& src,cv::Mat& dst);
+  void thresholdImageW(const cv::Mat& src, cv::Mat& dst);
 
   /**
    *   @brief Method extractROI to set
@@ -103,7 +100,7 @@ public:
    *   @param src is a Matrix of source of image
    *   @param dst is a Matrix of destination of image
    */
-	void extractROI(const cv::Mat& src,cv::Mat& dst);
+  void extractROI(const cv::Mat& src, cv::Mat& dst);
 
   /**
    *   @brief Method transforming perspective of lane image
@@ -177,7 +174,7 @@ public:
    *
    *   @return Status of lane detection.
    */
-	bool detectLane(std::string videoName);
+  bool detectLane(std::string videoName);
 
   /**
    *   @brief Method getYellowMax is to use get HSL max value of yellow
@@ -185,7 +182,7 @@ public:
    *
    *   @return HSL values for yellow lane.
    */
-	cv::Scalar getYellowMax();
+  cv::Scalar getYellowMax();
 
   /**
    *   @brief Method getYellowMin is to use get HSL min value of yellow
@@ -193,7 +190,7 @@ public:
    *
    *   @return HSL values for yellow lane.
    */
-	cv::Scalar getYellowMin();
+  cv::Scalar getYellowMin();
 
   /**
    *   @brief Method setYellowMax is to use set HSL max value of yellow
@@ -217,7 +214,7 @@ public:
    *
    *   @param  int of max GrayScale value.
    */
-	void setGrayScaleMax(int value);
+  void setGrayScaleMax(int value);
 
   /**
    *   @brief Method setGrayScaleMin is to use set min value of Gray scale
@@ -225,7 +222,7 @@ public:
    *
    *   @param  int of min GrayScale value
    */
-	void setGrayScaleMin(int value);
+  void setGrayScaleMin(int value);
 
   /**
    *   @brief Method getGrayScaleMin is to use get min value of GrayScale
@@ -233,7 +230,7 @@ public:
    *
    *   @return int of min GrayScale value
    */
-	int getGrayScaleMin();
+  int getGrayScaleMin();
 
   /**
    *   @brief Method getGrayScaleMax is to use get max value of GrayScale
@@ -241,14 +238,14 @@ public:
    *
    *   @return int of max GrayScale values
    */
-	int getGrayScaleMax();
+  int getGrayScaleMax();
 
-private:
-	cv::Scalar yellowMin;  // max possible RGB values of yellow
-	cv::Scalar yellowMax;  // min possible RGB values of yellow
-	int grayscaleMin;  // min possible grayscale value for white in our video
-	int grayscaleMax;  // max possible grayscale value for white in our video
-	std::string videoName;  // specify video name
+ private:
+  cv::Scalar yellowMin;  // max possible RGB values of yellow
+  cv::Scalar yellowMax;  // min possible RGB values of yellow
+  int grayscaleMin;  // min possible grayscale value for white in our video
+  int grayscaleMax;  // max possible grayscale value for white in our video
+  std::string videoName;  // specify video name
 };
 
-#endif /* LANEDETECTIONMODULE_H_ */
+#endif  // INCLUDE_LANEDETECTIONMODULE_HPP_

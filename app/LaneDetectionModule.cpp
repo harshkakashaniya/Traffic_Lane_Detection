@@ -37,7 +37,6 @@
  */
 
 #include "LaneDetectionModule.hpp"
-#include "Lane.cpp"
 
 /**
  *   @brief Default constructor for LaneDetectionModule
@@ -210,7 +209,8 @@ void LaneDetectionModule::extractLanes(const cv::Mat& src, cv::Mat& colorLane,
 
   maxRightIndex = maxRightIndex + halfSize;
 
-  // Normalize the right lane as there are breaks in the lane-Optional for stability
+  // Normalize the right lane as there are breaks in the
+  // lane-Optional for stability
   maxRightIndex = lane2.getStableCenter(maxRightIndex);
 
   // Declare vectors of Point for storing lane points
@@ -227,10 +227,9 @@ void LaneDetectionModule::extractLanes(const cv::Mat& src, cv::Mat& colorLane,
 
   // Left Lane ***********************************************************
   int currentHeight = bottomHeight;
-  //Assign start coordinates
+  // Assign start coordinates
   lane1.setStartCoordinate(cv::Point(maxLeftIndex, currentHeight));
   for (int i = 0; i < windowCount; i++) {
-
     // Get the top left and bottom right point to make a rectangle
     int tlX = maxLeftIndex - windowWidth / 2;
     int tlY = currentHeight - windowHeight;
@@ -276,10 +275,9 @@ void LaneDetectionModule::extractLanes(const cv::Mat& src, cv::Mat& colorLane,
 
   // Right Lane ****************************************************
   currentHeight = bottomHeight;
-  //Assign start coordinates
+  // Assign start coordinates
   lane2.setStartCoordinate(cv::Point(maxRightIndex, currentHeight));
   for (int i = 0; i < windowCount; i++) {
-
     // Get the top left and bottom right point to make a rectangle
     int tlX = maxRightIndex - windowWidth / 2;
     int tlY = currentHeight - windowHeight;
@@ -352,8 +350,6 @@ void LaneDetectionModule::extractLanes(const cv::Mat& src, cv::Mat& colorLane,
              cv::Scalar(0, 0, 125), -1);
 
 //  cv::imshow("Lane center", colorLane);
-
-//  std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 
 /**
@@ -372,8 +368,8 @@ void LaneDetectionModule::fitPoly(const std::vector<cv::Point>& src,
 
   // Add all the points to the mat
   for (size_t i = 0; i < src.size(); i++) {
-    x.at<float>(i, 0) = (float) src[i].x;
-    y.at<float>(i, 0) = (float) src[i].y;
+    x.at<float>(i, 0) = static_cast<float>(src[i].x);
+    y.at<float>(i, 0) = static_cast<float>(src[i].y);
   }
 
   int npoints = x.checkVector(1);
@@ -405,7 +401,6 @@ void LaneDetectionModule::fitPoly(const std::vector<cv::Point>& src,
  */
 double LaneDetectionModule::getDriveHeading(Lane& lane1, Lane& lane2,
                                             std::string& direction) {
-
   double modifiedSlope = 0;
   if (lane1.getStatus() && lane2.getStatus()) {
     // Get lane 1
@@ -476,7 +471,8 @@ void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
 
   // Find the points for drawing polynomial
   std::vector<float> laneOneCoeff = lane1.getPolyCoeff();
-//  std::cout << "Left lane params: " << laneOneCoeff[0] << " " << laneOneCoeff[1]
+//  std::cout << "Left lane params: " << laneOneCoeff[0] << " "
+//              << laneOneCoeff[1]
 //            << " " << laneOneCoeff[2] << std::endl;
 
   // Put in the first point of the lane i.e. starting coordinate
@@ -493,7 +489,6 @@ void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
     cv::arrowedLine(dispOutput, cv::Point(x + 400, yaxis[i] + 30),
                     cv::Point(x + 400, yaxis[i]), cv::Scalar(255, 255, 0), 6, 8,
                     0, 0.8);
-
   }
 
 //  std::cout << "Lane left points: \n";
@@ -572,7 +567,7 @@ void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
   double heading = getDriveHeading(lane1, lane2, direction);
 
   // Setting precision to two decimals
-  heading = (int) (100 * heading) / 100.0;
+  heading = static_cast<int>(100 * heading) / 100.0;
   std::string headStr = std::to_string(heading);
   for (std::string::size_type s = headStr.length() - 1; s > 0; --s) {
     if (headStr[s] == '0')
@@ -588,6 +583,8 @@ void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
               cv::FONT_HERSHEY_SIMPLEX, 0.8, cv::Scalar(255, 255, 255), 2);
   cv::putText(unwarpedColor, "Press C to exit.", cv::Point(1000, 50),
               cv::FONT_HERSHEY_SIMPLEX, 0.8, cv::Scalar(0, 0, 255), 2);
+  cv::putText(unwarpedColor, "Smart-Lane | ACME Robotics", cv::Point(75, 50),
+              cv::FONT_HERSHEY_SIMPLEX, 0.8, cv::Scalar(153, 51, 255), 2);
 
   imshow("Lane Detection", unwarpedColor);
 }

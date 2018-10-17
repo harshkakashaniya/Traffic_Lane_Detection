@@ -37,8 +37,8 @@
  *
  */
 
-#ifndef TRAFFIC_LANE_H_
-#define TRAFFIC_LANE_H_
+#ifndef INCLUDE_LANE_HPP_
+#define INCLUDE_LANE_HPP_
 
 #include <iostream>
 #include <vector>
@@ -53,7 +53,7 @@ class Lane {
    *        with ployorder,colour,polyCoeff,startCoordinate,status
    *        random values
    */
-	Lane();
+  Lane();
 
   /**
    *  @brief Default constructor for Lane
@@ -69,7 +69,7 @@ class Lane {
   /**
    *  @brief Default destructor for Lane class
    */
-	~Lane();
+  ~Lane();
 
   /*
    *  @brief Calculates the center x-coordinate averageof the first sliding
@@ -140,15 +140,15 @@ class Lane {
 
  private:
   int polyOrder;  // declare integer for order of line.
-  std::string colour;  //set RGB values for lane colour.
+  std::string colour;  // set RGB values for lane colour.
   std::vector<float> polyCoeff;  // Coefficients for equation
-  cv::Point startCoordinates;  //Reference coordinates for line.
+  cv::Point startCoordinates;  // Reference coordinates for line.
 
   // Average center to prevent jumps for entire run
   std::vector<int> averagingCenter;
   int averagingCount;
   int currentAveragingIndex;
-  bool status;  //for status for program.
+  bool status;  // For status for program.
 };
 
-#endif /* TRAFFIC_LANE_H_ */
+#endif  // INCLUDE_LANE_HPP_
