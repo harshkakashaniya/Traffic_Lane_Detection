@@ -1,28 +1,32 @@
+Done processing ./test/LaneTest.cpp
+Done processing ./test/LaneDetectionModuleTest.cpp
+Done processing ./test/GmockSteer.cpp
+Done processing ./test/main.cpp
+Done processing ./app/SteerDrive.cpp
+Done processing ./app/Lane.cpp
+Done processing ./app/LaneDetectionModule.cpp
+Done processing ./app/main.cpp
 Done processing ./include/Lane.hpp
-./include/LaneDetectionModule.hpp:76:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:85:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:94:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:103:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:114:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:114:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& Tm  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:115:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& invTm  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:128:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:128:  Is this a non-const reference? If so, make const or use a pointer: Lane& lane1  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:128:  Is this a non-const reference? If so, make const or use a pointer: Lane& lane2  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:77:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:86:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:95:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:104:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:115:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:115:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& Tm  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:116:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& invTm  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:129:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:129:  Is this a non-const reference? If so, make const or use a pointer: Lane& lane1  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:129:  Is this a non-const reference? If so, make const or use a pointer: Lane& lane2  [runtime/references] [2]
 ./include/LaneDetectionModule.hpp:140:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& dst  [runtime/references] [2]
 ./include/LaneDetectionModule.hpp:153:  Is this a non-const reference? If so, make const or use a pointer: Lane& lane1  [runtime/references] [2]
 ./include/LaneDetectionModule.hpp:153:  Is this a non-const reference? If so, make const or use a pointer: Lane& lane2  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:153:  Is this a non-const reference? If so, make const or use a pointer: std::string& direction  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:166:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& src2  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:166:  Is this a non-const reference? If so, make const or use a pointer: Lane& lane1  [runtime/references] [2]
-./include/LaneDetectionModule.hpp:167:  Is this a non-const reference? If so, make const or use a pointer: Lane& lane2  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:154:  Is this a non-const reference? If so, make const or use a pointer: std::string& direction  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:154:  Is this a non-const reference? If so, make const or use a pointer: SteerDrive& SD  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:164:  Is this a non-const reference? If so, make const or use a pointer: SteerDrive& SD  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:177:  Is this a non-const reference? If so, make const or use a pointer: cv::Mat& src2  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:177:  Is this a non-const reference? If so, make const or use a pointer: Lane& lane1  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:178:  Is this a non-const reference? If so, make const or use a pointer: Lane& lane2  [runtime/references] [2]
+./include/LaneDetectionModule.hpp:178:  Is this a non-const reference? If so, make const or use a pointer: SteerDrive& SD  [runtime/references] [2]
 Done processing ./include/LaneDetectionModule.hpp
-Done processing ./test/LaneDetectionModuleTest.cpp
-Done processing ./test/LaneTest.cpp
-Done processing ./test/main.cpp
-./app/LaneDetectionModule.cpp:66:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
-./app/LaneDetectionModule.cpp:667:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
-Done processing ./app/LaneDetectionModule.cpp
-Done processing ./app/main.cpp
-Done processing ./app/Lane.cpp
-Total errors found: 19
+Done processing ./include/SteerDrive.hpp
+Total errors found: 20

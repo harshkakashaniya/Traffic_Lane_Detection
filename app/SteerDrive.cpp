@@ -37,7 +37,6 @@
  */
 
 #include "SteerDrive.hpp"
-#include "gtest/gtest.h"
 /**
  *   @brief Default constructor for SteerDrive
  *          with ployorder,colour,polyCoeff,startCoordinate,status

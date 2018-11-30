@@ -1,16 +1,17 @@
 Checking app/Lane.cpp...
-[app/Lane.cpp:52]: (performance) Variable 'colour' is assigned in constructor body. Consider performing initialization in initialization list.
-[app/Lane.cpp:72]: (performance) Variable 'colour' is assigned in constructor body. Consider performing initialization in initialization list.
-1/6 files checked 12% done
+[app/Lane.cpp:73]: (performance) Variable 'colour' is assigned in constructor body. Consider performing initialization in initialization list.
+1/8 files checked 9% done
 Checking app/LaneDetectionModule.cpp...
-2/6 files checked 76% done
+2/8 files checked 64% done
+Checking app/SteerDrive.cpp...
+3/8 files checked 71% done
 Checking app/main.cpp...
-3/6 files checked 81% done
+4/8 files checked 76% done
+Checking test/GmockSteer.cpp...
+5/8 files checked 81% done
 Checking test/LaneDetectionModuleTest.cpp...
-4/6 files checked 93% done
+6/8 files checked 91% done
 Checking test/LaneTest.cpp...
-5/6 files checked 98% done
+7/8 files checked 99% done
 Checking test/main.cpp...
-6/6 files checked 100% done
-[app/Lane.cpp:149]: (style) The function 'getStartCoordinate' is never used.
-[app/Lane.cpp:176]: (style) The function 'setPolyOrder' is never used.
+8/8 files checked 100% done
