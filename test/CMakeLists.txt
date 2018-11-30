@@ -5,10 +5,14 @@ add_executable(
     main.cpp
     LaneDetectionModuleTest.cpp
     LaneTest.cpp
+    GmockSteer.cpp
     ../app/LaneDetectionModule.cpp
+    ../app/SteerDrive.cpp
     ../app/Lane.cpp
+
 )
 
-target_include_directories(smartLane-test PUBLIC ../vendor/googletest/googletest/include 
+target_include_directories(smartLane-test PUBLIC ../vendor/googletest/googletest/include
+						 ../vendor/googletest/googlemock/include
                                            ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(smartLane-test PUBLIC gtest ${OpenCV_LIBS})
+target_link_libraries(smartLane-test PUBLIC gmock gtest ${OpenCV_LIBS})
