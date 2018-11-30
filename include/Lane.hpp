@@ -70,7 +70,7 @@ class Lane {
   /**
    *  @brief Default destructor for Lane class
    */
-  ~Lane();
+  virtual ~Lane();
 
   /*
    *  @brief Calculates the center x-coordinate averageof the first sliding
@@ -80,7 +80,7 @@ class Lane {
    *
    *  @return averaged x-coordinate
    */
-  int getStableCenter(int coordinate);
+  virtual int getStableCenter(int coordinate);
 
   /*
    *  @brief Sets the center coordinate of the first sliding window
@@ -88,56 +88,56 @@ class Lane {
    *  @param point is current center co-ordinate
    *
    */
-  void setStartCoordinate(cv::Point point);
+  virtual void setStartCoordinate(cv::Point point);
 
   /*
    *  @brief Gets the center coordinate of the first sliding window
    *
    *  @return Center coordinate of the first sliding window(lane)
    */
-  cv::Point getStartCoordinate();
+  virtual cv::Point getStartCoordinate();
 
   /*
    *  @brief Sets the status of lane
    *
    *  @param flag is the status of the lane if polynomial found
    */
-  void setStatus(bool flag);
+  virtual void setStatus(bool flag);
 
   /*
    *  @brief Gets the status of lane
    *
    *  @return status of the lane
    */
-  bool getStatus();
+  virtual bool getStatus();
 
   /*
    *  @brief Sets the polyOrder of lane
    *
    *  @param value is the polyorder of lane
    */
-  void setPolyOrder(int value);
+  virtual void setPolyOrder(int value);
 
   /*
    *  @brief Gets the polyOrder of lane
    *
    *  @return value is the polyorder of lane
    */
-  int getPolyOrder();
+  virtual int getPolyOrder();
 
   /*
    *  @brief Sets the polynomial coeff of lane
    *
    *  @param coeff is a Mat(1x3) object containing coefficients
    */
-  void setPolyCoeff(cv::Mat coeff);
+  virtual void setPolyCoeff(cv::Mat coeff);
 
   /*
    *  @brief Gets the polynomial coeff of lane
    *
    *  @return vector containing coefficients
    */
-  std::vector<float> getPolyCoeff();
+  virtual std::vector<float> getPolyCoeff();
 
  private:
   int polyOrder;  // declare integer for order of line.
