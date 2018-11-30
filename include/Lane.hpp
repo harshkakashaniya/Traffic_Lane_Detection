@@ -47,12 +47,20 @@
 #include <algorithm>
 #include <opencv2/opencv.hpp>
 
+/**
+ * @brief Class Lane
+ * Lane for storing parameters of lane
+ */
 class Lane {
  public:
   /**
    *  @brief Default constructor for Lane
    *        with ployorder,colour,polyCoeff,startCoordinate,status
    *        random values
+   *
+   *  @param none
+   *
+   *  @return none
    */
   Lane();
 
@@ -64,13 +72,19 @@ class Lane {
    *  @param polyOrder is order of fitting polynomial
    *  @param color is the color of lane
    *  @param averagingCount number of values to average
+   *
+   *  @return none
    */
   Lane(int polyOrder, std::string color, int averagingCount);
 
   /**
    *  @brief Default destructor for Lane class
+   *
+   *  @param none
+   *
+   *  @return none
    */
-  ~Lane();
+  virtual ~Lane();
 
   /*
    *  @brief Calculates the center x-coordinate averageof the first sliding
@@ -80,64 +94,80 @@ class Lane {
    *
    *  @return averaged x-coordinate
    */
-  int getStableCenter(int coordinate);
+  virtual int getStableCenter(int coordinate);
 
   /*
    *  @brief Sets the center coordinate of the first sliding window
    *
    *  @param point is current center co-ordinate
    *
+   *  return void
+   *
    */
-  void setStartCoordinate(cv::Point point);
+  virtual void setStartCoordinate(cv::Point point);
 
   /*
    *  @brief Gets the center coordinate of the first sliding window
    *
+   *  @param none
+   *
    *  @return Center coordinate of the first sliding window(lane)
    */
-  cv::Point getStartCoordinate();
+  virtual cv::Point getStartCoordinate();
 
   /*
    *  @brief Sets the status of lane
    *
    *  @param flag is the status of the lane if polynomial found
+   *
+   *  @return void
    */
-  void setStatus(bool flag);
+  virtual void setStatus(bool flag);
 
   /*
    *  @brief Gets the status of lane
    *
+   *  @param none
+   *
    *  @return status of the lane
    */
-  bool getStatus();
+  virtual bool getStatus();
 
   /*
    *  @brief Sets the polyOrder of lane
    *
    *  @param value is the polyorder of lane
+   *
+   *  @return void
    */
-  void setPolyOrder(int value);
+  virtual void setPolyOrder(int value);
 
   /*
    *  @brief Gets the polyOrder of lane
    *
+   *  @param none
+   *
    *  @return value is the polyorder of lane
    */
-  int getPolyOrder();
+  virtual int getPolyOrder();
 
   /*
    *  @brief Sets the polynomial coeff of lane
    *
    *  @param coeff is a Mat(1x3) object containing coefficients
+   *
+   *  @return void
    */
-  void setPolyCoeff(cv::Mat coeff);
+  virtual void setPolyCoeff(cv::Mat coeff);
 
   /*
    *  @brief Gets the polynomial coeff of lane
    *
+   *  @param none
+   *
    *  @return vector containing coefficients
    */
-  std::vector<float> getPolyCoeff();
+  virtual std::vector<float> getPolyCoeff();
 
  private:
   int polyOrder;  // declare integer for order of line.

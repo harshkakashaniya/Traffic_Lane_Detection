@@ -53,17 +53,27 @@
 #include "opencv2/calib3d/calib3d.hpp"
 #include "Lane.hpp"
 
+/**
+ * @brief Class LaneDetectionModule
+ * Lane detection module for self driving cars
+ */
 class LaneDetectionModule {
  public:
   /**
    *   @brief Default constructor for LaneDetectionModule
    *
+   *   @param none
+   *
+   *   @return none
    */
   LaneDetectionModule();
 
   /**
    *   @brief Default destructor for LaneDetectionModule
    *
+   *   @param none
+   *
+   *   @return none
    */
   ~LaneDetectionModule();
 
@@ -72,6 +82,8 @@ class LaneDetectionModule {
    *
    *   @param src is a Matrix of source of image
    *   @param dst is a Matrix of destination of image
+   *
+   *   @return void
    */
   void undistortImage(const cv::Mat& src, cv::Mat& dst);
 
@@ -80,7 +92,9 @@ class LaneDetectionModule {
    *   		    yellow threshold image for LaneDetectionModule
    *
    *   @param src is a Matrix of source of image
-   *   @param dst is a Matrix of destination of imageg
+   *   @param dst is a Matrix of destination of image
+   *
+   *   @return void
    */
   void thresholdImageY(const cv::Mat& src, cv::Mat& dst);
 
@@ -90,6 +104,8 @@ class LaneDetectionModule {
    *
    *   @param src is a Matrix of source of image
    *   @param dst is a Matrix of destination of image
+   *
+   *   @return void
    */
   void thresholdImageW(const cv::Mat& src, cv::Mat& dst);
 
@@ -99,6 +115,8 @@ class LaneDetectionModule {
    *
    *   @param src is a Matrix of source of image
    *   @param dst is a Matrix of destination of image
+   *
+   *   @return void
    */
   void extractROI(const cv::Mat& src, cv::Mat& dst);
 
@@ -110,6 +128,8 @@ class LaneDetectionModule {
    *   @param dst is a Matrix of destination of image
    *   @param Tm is the transformation matrix for perspective
    *   @param invTm is the inverse of the transformation matrix
+   *
+   *   @return void
    */
   void transformPerspective(const cv::Mat& src, cv::Mat& dst, cv::Mat& Tm,
                             cv::Mat& invTm);
@@ -124,6 +144,8 @@ class LaneDetectionModule {
    *   @param lane1 object of class lane to store line characteristic.
    *   @param lane2 object of class lane to store line characteristic
    *   @param curveFlag to set degree of curve
+   *
+   *   @return void
    */
   void extractLanes(const cv::Mat& src, cv::Mat& dst, Lane& lane1, Lane& lane2,
                     int curveFlag);
@@ -136,6 +158,8 @@ class LaneDetectionModule {
    *   @param dst is the destination Mat to store the coefficients of the
    *          polynomial
    *   @param order is the order of polynomial
+   *
+   *   @return void
    */
   void fitPoly(const std::vector<cv::Point>& src, cv::Mat& dst, int order);
 
@@ -162,6 +186,8 @@ class LaneDetectionModule {
    *   @param lane1 object of class lane to store line characteristic.
    *   @param lane2 object of class lane to store line characteristic
    *   @param inv is the inverse perspective transformation matrix
+   *
+   *   @return void
    */
   void displayOutput(const cv::Mat& src, cv::Mat& src2, Lane& lane1,
                      Lane& lane2, cv::Mat inv);
@@ -180,6 +206,8 @@ class LaneDetectionModule {
    *   @brief Method getYellowMax is to use get HSL max value of yellow
    *          for LaneDetectionModule
    *
+   *   @param none
+   *
    *   @return HSL values for yellow lane.
    */
   cv::Scalar getYellowMax();
@@ -187,6 +215,8 @@ class LaneDetectionModule {
   /**
    *   @brief Method getYellowMin is to use get HSL min value of yellow
    *          for LaneDetectionModule
+   *
+   *   @param none
    *
    *   @return HSL values for yellow lane.
    */
@@ -197,6 +227,8 @@ class LaneDetectionModule {
    *          for LaneDetectionModule
    *
    *   @param  HSL values for yellow lane
+   *
+   *   @return void
    */
   void setYellowMax(cv::Scalar value);
 
@@ -205,6 +237,8 @@ class LaneDetectionModule {
    *          for LaneDetectionModule
    *
    *   @param  HSL values for yellow lane.
+   *
+   *   @return void
    */
   void setYellowMin(cv::Scalar value);
 
@@ -213,6 +247,8 @@ class LaneDetectionModule {
    *          value for LaneDetectionModule
    *
    *   @param  int of max GrayScale value.
+   *
+   *   @return void
    */
   void setGrayScaleMax(int value);
 
@@ -221,12 +257,16 @@ class LaneDetectionModule {
    *   value for LaneDetectionModule
    *
    *   @param  int of min GrayScale value
+   *
+   *   @return void
    */
   void setGrayScaleMin(int value);
 
   /**
    *   @brief Method getGrayScaleMin is to use get min value of GrayScale
    *          for LaneDetectionModule
+   *
+   *   @param none
    *
    *   @return int of min GrayScale value
    */
@@ -235,6 +275,8 @@ class LaneDetectionModule {
   /**
    *   @brief Method getGrayScaleMax is to use get max value of GrayScale
    *   for LaneDetectionModule
+   *
+   *   @param none
    *
    *   @return int of max GrayScale values
    */
