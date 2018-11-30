@@ -24,11 +24,11 @@
 
 /**
  *  @file    LaneMock.cpp
- *  @author  Harsh Kakashaniya and Rohitkrishna Nambiar
+ *  @author  Rohitkrishna Nambiar
  *  @date    11/25/2018
  *  @version 1.0
  *
- *  @brief UMD ENPM 808X, Week 5,Midterm Project Gmock test.
+ *  @brief UMD ENPM 808X, Gmock test.
  *
  *  @section DESCRIPTION
  *
@@ -45,21 +45,54 @@
 // GMock
 using ::testing::Return;
 
-// Create a mock class for Lane. We mock the method getStatus() that
-// is used in the getDriveHeading of LaneDetectionModule
+/*
+ * @brief Class LaneMock
+ *
+ * Create a mock class for Lane. We mock the method getStatus() that
+ * is used in the getDriveHeading of LaneDetectionModule
+ */
 class LaneMock : public Lane {
  public:
-  // Default constructor
+  /**
+   *  @brief Default constructor for MockLane
+   *
+   *  @param none
+   *
+   *  @return none
+   */
   LaneMock()
       : Lane() {
   }
 
-  // Overloaded constructor
+  /**
+   *  @brief Constructor for LaneMock inherited from Lane
+   *
+   *  @param polyOrder is order of fitting polynomial
+   *  @param color is the color of lane
+   *  @param averagingCount number of values to average
+   *
+   *  @return none
+   */
   LaneMock(int polyOrder, std::string color, int averagingCount)
       : Lane(polyOrder, color, averagingCount) {
   }
-  // Mock the getStatus method
+
+  /*
+   *  @brief Mock the getStatus function in Lane
+   *
+   *  @param none
+   *
+   *  @return Status of Lane
+   */
   MOCK_METHOD0(getStatus, bool());
+
+  /*
+   *  @brief Mock the getPolyCoeff function in Lane
+   *
+   *  @param none
+   *
+   *  @return Lane Coefficients
+   */
   MOCK_METHOD0(getPolyCoeff, std::vector<float>());
 };
 
@@ -68,7 +101,7 @@ class LaneMock : public Lane {
  *       by mocking getStatus function
  *
  *@param driveHeadingTest   Name of test suite
- *@param mockGetStatus      Name of the unit test
+ *@param mockGetStatusTest      Name of the unit test
  *
  *@return none
  */
@@ -108,17 +141,17 @@ TEST(driveHeadingTest, mockGetPolyCoeffTest) {
   LaneMock left(2, "red", 10);
   LaneMock right(2, "green", 10);
 
-  // Set the polynomial coefficients
-  std::vector<float> testLaneCoeff;
-  testLaneCoeff.push_back(175.535);
-  testLaneCoeff.push_back(0.363008);
-  testLaneCoeff.push_back(-0.000274466);
-
   // LaneDetectionModule module object
   LaneDetectionModule laneModule;
 
   // Create variables to store direction and slope
   std::string direction;
+
+  // Set the polynomial coefficients
+  std::vector<float> testLaneCoeff;
+  testLaneCoeff.push_back(175.535);
+  testLaneCoeff.push_back(0.363008);
+  testLaneCoeff.push_back(-0.000274466);
 
   // We only check the right lane as if that is false, the other
   // getStatus for left lane is not evaluated.
