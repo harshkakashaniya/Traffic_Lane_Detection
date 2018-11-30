@@ -1,5 +1,5 @@
 # Smart Lane - A Traffic Lane Detection System
-[![Build Status](https://travis-ci.org/harshkakashaniya/Traffic_Lane_Detection.svg?branch=master)](https://travis-ci.org/harshkakashaniya/Traffic_Lane_Detection) [![Coverage Status](https://coveralls.io/repos/github/harshkakashaniya/Traffic_Lane_Detection/badge.svg?branch=master)](https://coveralls.io/github/harshkakashaniya/Traffic_Lane_Detection?branch=master) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/harshkakashaniya/Traffic_Lane_Detection/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/harshkakashaniya/Traffic_Lane_Detection.svg?branch=GMock_Extra_Credit_Harsh)](https://travis-ci.org/harshkakashaniya/Traffic_Lane_Detection) [![Coverage Status](https://coveralls.io/repos/github/harshkakashaniya/Traffic_Lane_Detection/badge.svg?branch=GMock_Extra_Credit_Harsh)](https://coveralls.io/github/harshkakashaniya/Traffic_Lane_Detection?branch=GMock_Extra_Credit_Harsh) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/harshkakashaniya/Traffic_Lane_Detection/blob/GMock_Extra_Credit_Harsh/LICENSE)
 ---
 
 ## Overview
@@ -18,40 +18,40 @@ A quick overview of the algorithm is as follows:
 ## Algorithm Process and Output Results 
 
 This software project enables us to use data from camera of any car and provide lane assistance to the controller. It takes in colorful image of road and surrounding. And provides output of turning angle, lane detection and turning side. It takes input image as follows.
-## INPUT IMAGE
+## Input Image
 ![](images/ColorImage.jpg)
 
 
 This input frame is first undistorted. Later this image processes the yellow lane on the left by converting whole image into HSV (to reduce effect of change in ambient light). Then it takes in yellow color values. With which it compares values of all pixels in the image. And we get the following output.
-## YELLOW THRESHOLD IMAGE
+## Yellow Threshold Image
 ![](images/YellowThreshold.jpg)
 
 Additionally, we convert original image to grayscale image and then find white lane. Output of white lane is shown below.
-## WHITE THRESHOLD IMAGE
+## White Threshold Image
 ![](images/WhiteThresholdImage.jpg)
 
 We merge both the images and get resultant image. Now if we define our region of interest we will be able to eliminate noise above lower half. This is be the fact that lane can not go above half the area.
-## COMBINED IMAGE
+## Combined Image
 ![](images/CombinedThresholdImage.jpg)
 
 And finally, after getting points we plot polygon curves where other elements of matrix(Mask matrix) are zero and elements under polygon are 1's To get our desired Region of interest we do bitwise_And so that final matrix will have white elements inside the ROI only. So final output of a frame will be as shown.
-## COMBINED with ROI IMAGE
+## Combined with ROI Image
 ![](images/ROIImage.jpg)
 
 To calculate exact angles we need do transformation so that we can see Lane parallel and can calculated exact angles for driveheading and which will give correct angles to controller to stear right or left.
-## SLIDING WINDOW IMAGE
+## Sliding Window Image
 ![](images/SlidingWindow.jpg)
 
 We use sliding window method to find both lane points through out the frame to calculate lines . So output of this method is shown as below. Here in image we can see line plotted with the help of points.
-## SLIDING WINDOW WITH LINES IMAGE
+## Sliding Window With Lines Image
 ![](images/LanesPerspective.jpg)
 
 On terminal, We will get drive angle and action to be taken. Terminal output is actually output to the controller. This program will run and our car actuators will follow stear accordingly so that the car remains inside the lane .As shown in image.  
-## TERMINAL OUTPUT IMAGE
+## Terminal Output Image
 ![](images/Terminal.jpg)
 
 Hence, with the help of lanes we can control car and give directions to driver or actuator for automatic cars. Hence, in output we get driveheading in angle of turning and assistance on video frame.
-## FINAL OUTPUT IMAGE
+## Final Output Image
 ![](images/FinalOutput.jpg)
 
 ## Development Process
@@ -92,6 +92,7 @@ Simple starter C++ project with:
 - OpenCV - (OpenCV uses a BSD license and hence can be used for production with modification to the code.)
 - cmake
 - googletest
+- gmock
 
 ## OpenCV installation
 ```
@@ -179,7 +180,7 @@ A complete OpenCV installation guide in Ubuntu can be found [here](http://www.co
 
 ## Standard install via command-line
 ```
-git clone --recursive https://github.com/harshkakashaniya/Traffic_Lane_Detection
+git clone --recursive https://github.com/harshkakashaniya/Traffic_Lane_Detection --branch GMock_Extra_Credit_Harsh
 cd <path to repository>
 mkdir build
 cd build
@@ -189,6 +190,21 @@ Run tests: ./test/smartLane-test
 Run program: ./app/shell-app ../input/project_video.mp4
 
 ```
+## Testing with Gmock
+In this project we have have 2 dependent class named Lane and SteerDrive. 
+
+Here SteerDrive class is used to modulate our software package for any car which may have different transmission system and gear ratios between our steer angle of wheel and steering angle of car Stearing. Hence we can use this software to many applications just by changing car model and mechanical parameters.
+
+So we mock Steerdrive class and see the implementation in the main class of LaneDetectionModule. Hence, two tests are written to check if the dependent class is performing according to our need.
+Mock file can be seen in test folder named GmockSteer.cpp it also includes tests.
+this can be tested with a previous command of Run test as
+
+```
+cd build
+Run tests: ./test/smartLane-test
+```
+
+
 
 ## Building for code coverage
 ```
@@ -229,7 +245,7 @@ In your Eclipse workspace directory (or create a new one), checkout the repo (an
 ```
 mkdir -p ~/workspace
 cd ~/workspace
-git clone --recursive https://github.com/harshkakashaniya/Traffic_Lane_Detection
+git clone --recursive https://github.com/harshkakashaniya/Traffic_Lane_Detection --branch GMock_Extra_Credit_Harsh
 ```
 
 In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of Traffic_Lane_Detection
