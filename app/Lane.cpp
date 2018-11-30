@@ -46,14 +46,13 @@
  *   @param nothing
  *   @return nothing
  */
-Lane::Lane() {
-//  std::cout << "Default constructor called" << std::endl;
-  polyOrder = 1;
-  colour = "red";
-  averagingCount = 10;
-  currentAveragingIndex = 0;
-  status = false;
-}
+Lane::Lane()
+  :polyOrder(1),
+  colour("red"),
+  averagingCount(10),
+  currentAveragingIndex(0),
+  status(false) {
+  }
 
 /**
  *   @brief Default constructor for Lane
@@ -64,12 +63,14 @@ Lane::Lane() {
  *   @param color is the color of lane
  *   @param averagingCount number of values to average
  */
-Lane::Lane(int polyOrder, std::string color, int averagingCount) {
-//  std::cout << "Lane created with the following values: Polyorder: "
-//            << polyOrder << " Color: " << color << " averaging count: "
-//            << averagingCount << std::endl;
+Lane::Lane(int polyOrder , std::string colour, int averagingCount)
+  :polyOrder(1),
+  colour("red"),
+  averagingCount(10),
+  currentAveragingIndex(0),
+  status(false) {
   this->polyOrder = polyOrder;
-  this->colour = color;
+  this->colour = colour;
   this->averagingCount = averagingCount;
   currentAveragingIndex = 0;
   status = false;
