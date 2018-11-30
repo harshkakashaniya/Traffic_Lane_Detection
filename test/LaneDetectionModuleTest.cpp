@@ -35,16 +35,47 @@
 #include "LaneDetectionModule.hpp"
 #include "opencv2/opencv.hpp"
 
-// LaneDetectionModule module object
-LaneDetectionModule laneModule;
+/*
+ * @brief Class LaneDetectionModuleTest
+ *
+ * Helps to SetUp and Tear-down before and after test for
+ * similar tests.
+ */
+class LaneDetectionModuleTest : public ::testing::Test {
+ public:
+  // LaneDetectionModule module object
+  LaneDetectionModule laneModule;
+
+  /**
+   *  @brief Setup Function used during tests
+   *
+   *  @param none
+   *
+   *  @return void
+   */
+  void SetUp() {
+  }
+
+  /**
+   *  @brief Teardown function used during tests
+   *
+   *  @param none
+   *
+   *  @return void
+   */
+  void TearDown() {
+  }
+};
 
 /**
  *@brief Test get grey scale min threshold function.
  *
  *@param GetSetTest       Get set function test
  *@param getGrayScaleMin  Name of the unit test
+ *
+ *@return none
  */
-TEST(GetSetTest, GetGrayScaleMin) {
+TEST_F(LaneDetectionModuleTest, GetGrayScaleMin) {
   int lowTheshold = laneModule.getGrayScaleMin();
   ASSERT_EQ(lowTheshold, 200);
 }
@@ -54,8 +85,10 @@ TEST(GetSetTest, GetGrayScaleMin) {
  *
  *@param GetSetTest       Get set function test
  *@param getGrayScaleMax  Name of the unit test
+ *
+ *@return none
  */
-TEST(GetSetTest, GetGrayScaleMax) {
+TEST_F(LaneDetectionModuleTest, GetGrayScaleMax) {
   int highTheshold = laneModule.getGrayScaleMax();
   ASSERT_EQ(highTheshold, 255);
 }
@@ -65,8 +98,10 @@ TEST(GetSetTest, GetGrayScaleMax) {
  *
  *@param GetSetTest       Get set function test
  *@param getYellowMin     Name of the unit test
+ *
+ *@return none
  */
-TEST(GetSetTest, GetYellowMin) {
+TEST_F(LaneDetectionModuleTest, GetYellowMin) {
   cv::Scalar lowTheshold = laneModule.getYellowMin();
   ASSERT_EQ(lowTheshold, cv::Scalar(20, 100, 100));
 }
@@ -76,8 +111,10 @@ TEST(GetSetTest, GetYellowMin) {
  *
  *@param GetSetTest       Get set function test
  *@param getYellowMax     Name of the unit test
+ *
+ *@return none
  */
-TEST(GetSetTest, GetYellowMax) {
+TEST_F(LaneDetectionModuleTest, GetYellowMax) {
   cv::Scalar highTheshold = laneModule.getYellowMax();
   ASSERT_EQ(highTheshold, cv::Scalar(30, 255, 255));
 }
@@ -87,8 +124,10 @@ TEST(GetSetTest, GetYellowMax) {
  *
  *@param GetSetTest       Get set function test
  *@param setGrayScaleMin  Name of the unit test
+ *
+ *@return none
  */
-TEST(GetSetTest, SetGrayScaleMin) {
+TEST_F(LaneDetectionModuleTest, SetGrayScaleMin) {
   laneModule.setGrayScaleMin(150);
   int lowTheshold = laneModule.getGrayScaleMin();
   ASSERT_EQ(lowTheshold, 150);
@@ -99,8 +138,10 @@ TEST(GetSetTest, SetGrayScaleMin) {
  *
  *@param GetSetTest       Get set function test
  *@param SetGrayScaleMax  Name of the unit test
+ *
+ *@return none
  */
-TEST(GetSetTest, SetGrayScaleMax) {
+TEST_F(LaneDetectionModuleTest, SetGrayScaleMax) {
   laneModule.setGrayScaleMax(210);
   int highTheshold = laneModule.getGrayScaleMax();
   ASSERT_EQ(highTheshold, 210);
@@ -111,8 +152,10 @@ TEST(GetSetTest, SetGrayScaleMax) {
  *
  *@param GetSetTest       Get set function test
  *@param setYellowMin     Name of the unit test
+ *
+ *@return none
  */
-TEST(GetSetTest, SetYellowMin) {
+TEST_F(LaneDetectionModuleTest, SetYellowMin) {
   laneModule.setYellowMin(cv::Scalar(50, 50, 50));
   cv::Scalar lowTheshold = laneModule.getYellowMin();
   ASSERT_EQ(lowTheshold, cv::Scalar(50, 50, 50));
@@ -123,8 +166,10 @@ TEST(GetSetTest, SetYellowMin) {
  *
  *@param GetSetTest       Get set function test
  *@param SetYellowMax     Name of the unit test
+ *
+ *@return none
  */
-TEST(GetSetTest, SetYellowMax) {
+TEST_F(LaneDetectionModuleTest, SetYellowMax) {
   laneModule.setYellowMax(cv::Scalar(150, 150, 150));
   cv::Scalar highTheshold = laneModule.getYellowMax();
   ASSERT_EQ(highTheshold, cv::Scalar(150, 150, 150));
@@ -135,8 +180,10 @@ TEST(GetSetTest, SetYellowMax) {
  *
  *@param FunctionalTest   Get set function test
  *@param TestImage        Name of the unit test
+ *
+ *@return none
  */
-TEST(FunctionalTest, TestImage) {
+TEST_F(LaneDetectionModuleTest, TestImage) {
   bool status = laneModule.detectLane("../input/ColorImage.jpg");
   ASSERT_EQ(status, true);
 }
@@ -146,8 +193,10 @@ TEST(FunctionalTest, TestImage) {
  *
  *@param FunctionalTest     Get set function test
  *@param TestFalseImagePath Name of the unit test
+ *
+ *@return none
  */
-TEST(FunctionalTest, TestFalseImagePath) {
+TEST_F(LaneDetectionModuleTest, TestFalseImagePath) {
   bool status = laneModule.detectLane("../input/ColorImage1.jpg");
   ASSERT_EQ(status, false);
 }
