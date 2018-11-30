@@ -19,10 +19,9 @@ Done processing ./include/Lane.hpp
 Done processing ./include/LaneDetectionModule.hpp
 Done processing ./test/LaneDetectionModuleTest.cpp
 Done processing ./test/LaneTest.cpp
+Done processing ./test/LaneMock.cpp
 Done processing ./test/main.cpp
-./app/LaneDetectionModule.cpp:66:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
-./app/LaneDetectionModule.cpp:667:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
 Done processing ./app/LaneDetectionModule.cpp
 Done processing ./app/main.cpp
 Done processing ./app/Lane.cpp
-Total errors found: 19
+Total errors found: 17

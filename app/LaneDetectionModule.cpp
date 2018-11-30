@@ -38,9 +38,7 @@
 
 #include "LaneDetectionModule.hpp"
 
-/**
- *   @brief Default constructor for LaneDetectionModule
- */
+
 LaneDetectionModule::LaneDetectionModule() {
   yellowMin = cv::Scalar(20, 100, 100);  // yellow lane min threshold
   yellowMax = cv::Scalar(30, 255, 255);  // yellow lane max threshold
@@ -49,21 +47,16 @@ LaneDetectionModule::LaneDetectionModule() {
   videoName = "xyz.mp4";  // specify default video name
 }
 
-/**
- *   @brief Default destructor for LaneDetectionModule
- */
+
 LaneDetectionModule::~LaneDetectionModule() {
 }
 
-/**
- *   @brief Method Undistortedimage for LaneDetectionModule
- *
- *   @param src is a Matrix of source of image
- *   @param dst is a Matrix of destination of image
- */
+
 void LaneDetectionModule::undistortImage(const cv::Mat& src, cv::Mat& dst) {
   cv::Mat cameraMatrix =
-      (cv::Mat_<double>(3, 3) << 1154.22732, 0.0, 671.627794, 0.0, 1148.18221, 386.046312, 0.0, 0.0, 1.0);
+      (cv::Mat_<double>(3, 3) << 1154.22732, 0.0,
+
+  671.627794, 0.0, 1148.18221, 386.046312, 0.0, 0.0, 1.0);
 
   std::vector<double> distortionCoeff { -.242565104, -0.0477893070,
       -0.00131388084, -0.0000879107779, 0.0220573263 };
@@ -71,13 +64,7 @@ void LaneDetectionModule::undistortImage(const cv::Mat& src, cv::Mat& dst) {
   cv::undistort(src, dst, cameraMatrix, distortionCoeff);
 }
 
-/**
- *   @brief Method thresholdImageY to set
- *   		    yellow threshold image for LaneDetectionModule
- *
- *   @param src is a Matrix of source of image
- *   @param dst is a Matrix of destination of image
- */
+
 void LaneDetectionModule::thresholdImageY(const cv::Mat& src, cv::Mat& dst) {
   // Image to HLS type image for decreasing effect of light intensity.
   cv::cvtColor(src, dst, cv::COLOR_BGR2HLS);
@@ -86,13 +73,7 @@ void LaneDetectionModule::thresholdImageY(const cv::Mat& src, cv::Mat& dst) {
   cv::inRange(dst, yellowMin, yellowMax, dst);
 }
 
-/**
- *   @brief Method thresholdImageW to set
- *   		    white threshold image for LaneDetectionModule
- *
- *   @param src is a Matrix of source of image
- *   @param dst is a Matrix of destination of image
- */
+
 void LaneDetectionModule::thresholdImageW(const cv::Mat& src, cv::Mat& dst) {
   // Convert to grayscale image
   cv::cvtColor(src, dst, cv::COLOR_RGB2GRAY);
@@ -101,13 +82,7 @@ void LaneDetectionModule::thresholdImageW(const cv::Mat& src, cv::Mat& dst) {
   cv::inRange(dst, grayscaleMin, grayscaleMax, dst);
 }
 
-/**
- *   @brief Method extractROI to set
- *   		    region of interest for LaneDetectionModule
- *
- *   @param src is a Matrix of source of image
- *   @param dst is a Matrix of destination of image
- */
+
 void LaneDetectionModule::extractROI(const cv::Mat& src, cv::Mat& dst) {
   int width = src.cols;  // width of recieved frame.
   int height = src.rows;  // height of recieved frame.
@@ -126,15 +101,7 @@ void LaneDetectionModule::extractROI(const cv::Mat& src, cv::Mat& dst) {
   bitwise_and(src, mask, dst);
 }
 
-/**
- *   @brief Method transforming perspective of lane image
- *
- *
- *   @param src is a Matrix of source of image
- *   @param dst is a Matrix of destination of image
- *   @param Tm is the transformation matrix for perspective
- *   @param invTm is the inverse of the transformation matrix
- */
+
 void LaneDetectionModule::transformPerspective(const cv::Mat& src, cv::Mat& dst,
                                                cv::Mat& Tm, cv::Mat& invTm) {
   int w = src.cols;
@@ -157,17 +124,7 @@ void LaneDetectionModule::transformPerspective(const cv::Mat& src, cv::Mat& dst,
   cv::warpPerspective(src, dst, Tm, cv::Size(w, h));
 }
 
-/**
- *   @brief Method extractLanes to calculate
- *          parameters of lines and its characteristics
- *          for LaneDetectionModule.
- *
- *   @param src is a Matrix of source of image
- *   @param dst is a Matrix of destination of image
- *   @param lane1 object of class lane to store line characteristic.
- *   @param lane2 object of class lane to store line characteristic
- *   @param curveFlag to set degree of curve
- */
+
 void LaneDetectionModule::extractLanes(const cv::Mat& src, cv::Mat& colorLane,
                                        Lane& lane1, Lane& lane2,
                                        int curveFlag) {
@@ -352,15 +309,7 @@ void LaneDetectionModule::extractLanes(const cv::Mat& src, cv::Mat& colorLane,
 //  cv::imshow("Lane center", colorLane);
 }
 
-/**
- *   @brief Method fitPoly fits a 2nd order polynomial to the points
- *   on the lane
- *
- *   @param src is the input image from previous step
- *   @param dst is the destination Mat to store the coefficients of the
- *          polynomial
- *   @param order is the order of polynomial
- */
+
 void LaneDetectionModule::fitPoly(const std::vector<cv::Point>& src,
                                   cv::Mat& dst, int order) {
   cv::Mat x = cv::Mat(src.size(), 1, CV_32F);
@@ -388,17 +337,7 @@ void LaneDetectionModule::fitPoly(const std::vector<cv::Point>& src,
               ((x.depth() == CV_64F || y.depth() == CV_64F) ? CV_64F : CV_32F));
 }
 
-/**
- *   @brief Method getDriveHeading to calculate
- *          drive heading to be given to actuator for further action
- *          in LaneDetectionModule.
- *
- *   @param lane1 object of class lane to store line characteristic.
- *   @param lane2 object of class lane to store line characteristic.
- *   @param direction is the string object to hold direction left etc.
- *
- *   @return value of drive head.
- */
+
 double LaneDetectionModule::getDriveHeading(Lane& lane1, Lane& lane2,
                                             std::string& direction) {
   double modifiedSlope = 0;
@@ -442,17 +381,7 @@ double LaneDetectionModule::getDriveHeading(Lane& lane1, Lane& lane2,
   return modifiedSlope;
 }
 
-/**
- *   @brief Method displayOutput to calculate
- *        to display of the system
- *        for LaneDetectionModule.
- *
- *   @param src is a Matrix of source of image
- *   @param src2 is the source color image
- *   @param lane1 object of class lane to store line characteristic.
- *   @param lane2 object of class lane to store line characteristic
- *   @param inv is the inverse perspective transformation matrix
- */
+
 void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
                                         Lane& lane1, Lane& lane2, cv::Mat inv) {
   std::vector<int> yaxis = { 15, 50, 100, 150, 200, 250, 300, 350, 400, 450,
@@ -466,14 +395,14 @@ void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
   // **** Lane 1 **** //
 
   // Find the start coordinate
-//  cv::Point laneOneSC = lane1.getStartCoordinate();
-//  std::cout << "Left lane start coordinate: " << laneOneSC << std::endl;
+  //  cv::Point laneOneSC = lane1.getStartCoordinate();
+  //  std::cout << "Left lane start coordinate: " << laneOneSC << std::endl;
 
   // Find the points for drawing polynomial
   std::vector<float> laneOneCoeff = lane1.getPolyCoeff();
-//  std::cout << "Left lane params: " << laneOneCoeff[0] << " "
-//              << laneOneCoeff[1]
-//            << " " << laneOneCoeff[2] << std::endl;
+  //  std::cout << "Left lane params: " << laneOneCoeff[0] << " "
+  //              << laneOneCoeff[1]
+  //            << " " << laneOneCoeff[2] << std::endl;
 
   // Put in the first point of the lane i.e. starting coordinate
   std::vector<cv::Point> laneOnePoints = { };
@@ -589,14 +518,7 @@ void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
   imshow("Lane Detection", unwarpedColor);
 }
 
-/**
- *   @brief Method detectLane check if program is successfully running
- *          gives bool output for LaneDetectionModule
- *
- *   @param videoName is video of source
- *
- *   @return Status of lane detection.
- */
+
 bool LaneDetectionModule::detectLane(std::string videoName) {
   cv::VideoCapture cap(videoName);  // open the default camera
   if (!cap.isOpened())  // check if we succeeded
@@ -664,87 +586,47 @@ bool LaneDetectionModule::detectLane(std::string videoName) {
     if (cv::waitKey(30) >= 0)
       break;
   }
-  // the camera will be deinitialized automatically in VideoCapture destructor. If
-  // Everything works without error, return true.
+  // the camera will be deinitialized automatically in VideoCapture destructor.
+  // If Everything works without error, return true.
   return true;
 }
 
-/**
- *   @brief Method getYellowMax is to use get HSL max value of yellow
- *          for LaneDetectionModule
- *
- *   @return HSL values for yellow lane.
- */
+
 cv::Scalar LaneDetectionModule::getYellowMax() {
   return yellowMax;
 }
 
-/**
- *   @brief Method getYellowMin is to use get HSL min value of yellow
- *          for LaneDetectionModule
- *
- *   @return HSL values for yellow lane.
- */
+
 cv::Scalar LaneDetectionModule::getYellowMin() {
   return yellowMin;
 }
 
-/**
- *   @brief Method setYellowMax is to use set HSL max value of yellow
- *          for LaneDetectionModule
- *
- *   @param  HSL values for yellow lane
- */
+
 void LaneDetectionModule::setYellowMax(cv::Scalar value) {
   yellowMax = value;
 }
 
-/**
- *   @brief Method setYellowMin is to use set min value of yellow
- *          for LaneDetectionModule
- *
- *   @param  HSL values for yellow lane.
- */
+
 void LaneDetectionModule::setYellowMin(cv::Scalar value) {
   yellowMin = value;
 }
 
-/**
- *   @brief Method setGrayScaleMax is to use set max value of Gray scale
- *          value for LaneDetectionModule
- *
- *   @param  int of max GrayScale value.
- */
+
 void LaneDetectionModule::setGrayScaleMax(int value) {
   grayscaleMax = value;
 }
 
-/**
- *   @brief Method setGrayScaleMin is to use set min value of Gray scale
- *   value for LaneDetectionModule
- *
- *   @param  int of min GrayScale value
- */
+
 void LaneDetectionModule::setGrayScaleMin(int value) {
   grayscaleMin = value;
 }
 
-/**
- *   @brief Method getGrayScaleMin is to use get min value of GrayScale
- *          for LaneDetectionModule
- *
- *   @return int of min GrayScale value
- */
+
 int LaneDetectionModule::getGrayScaleMin() {
   return grayscaleMin;
 }
 
-/**
- *   @brief Method getGrayScaleMax is to use get max value of GrayScale
- *   for LaneDetectionModule
- *
- *   @return int of max GrayScale values
- */
+
 int LaneDetectionModule::getGrayScaleMax() {
   return grayscaleMax;
 }
