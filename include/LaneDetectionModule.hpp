@@ -52,6 +52,7 @@
 #include "opencv2/features2d/features2d.hpp"
 #include "opencv2/calib3d/calib3d.hpp"
 #include "Lane.hpp"
+#include "SteerDrive.hpp"
 
 class LaneDetectionModule {
  public:
@@ -127,7 +128,6 @@ class LaneDetectionModule {
    */
   void extractLanes(const cv::Mat& src, cv::Mat& dst, Lane& lane1, Lane& lane2,
                     int curveFlag);
-
   /**
    *   @brief Method fitPoly fits a 2nd order polynomial to the points
    *   on the lane
@@ -150,21 +150,32 @@ class LaneDetectionModule {
    *
    *   @return value of drive head.
    */
-  double getDriveHeading(Lane& lane1, Lane& lane2, std::string& direction);
+  double getDriveHeading(Lane& lane1, Lane& lane2,
+                        std::string& direction, SteerDrive& SD);
 
   /**
    *   @brief Method displayOutput to calculate
    *   		  to display of the system
    *   		  for LaneDetectionModule.
    *
-   *   @param src is a Matrix of source of image
-   *   @param src2 is the source color image
-   *   @param lane1 object of class lane to store line characteristic.
-   *   @param lane2 object of class lane to store line characteristic
-   *   @param inv is the inverse perspective transformation matrix
+   *   @param Object of SteerDrive to compute the gear ratio.
+   *   @return Resultant gear ratio.
    */
+  float computeGearRatio(SteerDrive& SD);
+
+   /**
+    *   @brief Method displayOutput to calculate
+    *   		  to display of the system
+    *   		  for LaneDetectionModule.
+    *
+    *   @param src is a Matrix of source of image
+    *   @param src2 is the source color image
+    *   @param lane1 object of class lane to store line characteristic.
+    *   @param lane2 object of class lane to store line characteristic
+    *   @param inv is the inverse perspective transformation matrix
+    */
   void displayOutput(const cv::Mat& src, cv::Mat& src2, Lane& lane1,
-                     Lane& lane2, cv::Mat inv);
+                     Lane& lane2, cv::Mat inv, SteerDrive& SD);
 
   /**
    *   @brief Method detectLane check if program is successfully running
