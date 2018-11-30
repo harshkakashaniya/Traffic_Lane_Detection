@@ -63,7 +63,8 @@ LaneDetectionModule::~LaneDetectionModule() {
  */
 void LaneDetectionModule::undistortImage(const cv::Mat& src, cv::Mat& dst) {
   cv::Mat cameraMatrix =
-      (cv::Mat_<double>(3, 3) << 1154.22732, 0.0, 671.627794, 0.0, 1148.18221, 386.046312, 0.0, 0.0, 1.0);
+      (cv::Mat_<double>(3, 3) << 1154.22732, 0.0, 671.627794, 0.0, 1148.18221,
+      386.046312, 0.0, 0.0, 1.0);
 
   std::vector<double> distortionCoeff { -.242565104, -0.0477893070,
       -0.00131388084, -0.0000879107779, 0.0220573263 };
@@ -398,9 +399,10 @@ void LaneDetectionModule::fitPoly(const std::vector<cv::Point>& src,
  *   @param direction is the string object to hold direction left etc.
  *
  *   @return value of drive head.
+
  */
 double LaneDetectionModule::getDriveHeading(Lane& lane1, Lane& lane2,
-                                            std::string& direction) {
+                                    std::string& direction, SteerDrive& SD) {
   double modifiedSlope = 0;
   if (lane1.getStatus() && lane2.getStatus()) {
     // Get lane 1
@@ -438,9 +440,35 @@ double LaneDetectionModule::getDriveHeading(Lane& lane1, Lane& lane2,
       direction = "Head straight";
     }
   }
-
+  SD.setStatus(true);
   return modifiedSlope;
-}
+  }
+
+/**
+ *   @brief Method displayOutput to calculate
+ *   		  to display of the system
+ *   		  for LaneDetectionModule.
+ *
+ *   @param Object of SteerDrive to compute the gear ratio.
+ *   @return Resultant gear ratio.
+ */
+  float LaneDetectionModule::computeGearRatio(SteerDrive& SD) {
+  float MA = SD.getMechAdvantage();
+  float DR = SD.getDifferentialRatio();
+  if (MA > 2) {
+  SD.setCarModel("BMW");
+  } else {
+  SD.setCarModel("Audi R8");
+  }
+
+  if (SD.getStatus()) {
+  return SD.ResultantGearBox(MA , DR);
+  } else {
+  return 0;
+  }
+  SD.setDifferentialRatio(2.0);
+  SD.setMechAdvantage(1.0);
+  }
 
 /**
  *   @brief Method displayOutput to calculate
@@ -454,7 +482,7 @@ double LaneDetectionModule::getDriveHeading(Lane& lane1, Lane& lane2,
  *   @param inv is the inverse perspective transformation matrix
  */
 void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
-                                        Lane& lane1, Lane& lane2, cv::Mat inv) {
+Lane& lane1, Lane& lane2, cv::Mat inv, SteerDrive& SD) {
   std::vector<int> yaxis = { 15, 50, 100, 150, 200, 250, 300, 350, 400, 450,
       500, 550, 600, 650, 715 };
 
@@ -564,11 +592,13 @@ void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
 
   // Get drive heading
   std::string direction;
-  double heading = getDriveHeading(lane1, lane2, direction);
-
+  double heading = getDriveHeading(lane1, lane2, direction , SD);
   // Setting precision to two decimals
+
   heading = static_cast<int>(100 * heading) / 100.0;
+  float StearingAngle = heading*computeGearRatio(SD);
   std::string headStr = std::to_string(heading);
+  std::string steerStr = std::to_string(StearingAngle);
   for (std::string::size_type s = headStr.length() - 1; s > 0; --s) {
     if (headStr[s] == '0')
       headStr.erase(s, 1);
@@ -576,7 +606,9 @@ void LaneDetectionModule::displayOutput(const cv::Mat& src, cv::Mat& src2,
       break;
   }
   std::string result = "Drive angle: " + headStr + " degrees.";
-  std::cout << result << " Action: " << direction << std::endl;
+  std::string Steer  = "Steering angle:" + steerStr + " degrees." +
+  "CAR running this module is" + SD.getCarModel();
+  std::cout << result << " Action: " << direction <<" " << Steer<< std::endl;
   cv::putText(unwarpedColor, result, cv::Point(500, 50),
               cv::FONT_HERSHEY_SIMPLEX, 0.8, cv::Scalar(255, 255, 255), 2);
   cv::putText(unwarpedColor, direction, cv::Point(550, 100),
@@ -654,7 +686,9 @@ bool LaneDetectionModule::detectLane(std::string videoName) {
     extractLanes(warpedImage, laneColor, leftLane, rightLane, 2);
 
     // Step 7: Display the output
-    displayOutput(laneColor, frame, leftLane, rightLane, invtransformMatrix);
+    SteerDrive SD;
+    displayOutput(laneColor, frame, leftLane, rightLane,
+                  invtransformMatrix , SD);
 
     // Display routine
     cv::Mat combined;
@@ -664,7 +698,8 @@ bool LaneDetectionModule::detectLane(std::string videoName) {
     if (cv::waitKey(30) >= 0)
       break;
   }
-  // the camera will be deinitialized automatically in VideoCapture destructor. If
+  // the camera will be deinitialized automatically in VideoCapture
+  // destructor.If
   // Everything works without error, return true.
   return true;
 }
