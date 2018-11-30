@@ -1,13 +1,20 @@
 \hypertarget{classLaneDetectionModule}{}\section{Lane\+Detection\+Module Class Reference}
 \label{classLaneDetectionModule}\index{Lane\+Detection\+Module@{Lane\+Detection\+Module}}
+
+
+Class \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module} \hyperlink{classLane}{Lane} detection module for self driving cars.  
+
+
+
+
+{\ttfamily \#include $<$Lane\+Detection\+Module.\+hpp$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classLaneDetectionModule_a044d95cfc95e4dba1c96ee62c50b6df6}{Lane\+Detection\+Module} ()\hypertarget{classLaneDetectionModule_a044d95cfc95e4dba1c96ee62c50b6df6}{}\label{classLaneDetectionModule_a044d95cfc95e4dba1c96ee62c50b6df6}
-
+\hyperlink{classLaneDetectionModule_a044d95cfc95e4dba1c96ee62c50b6df6}{Lane\+Detection\+Module} ()
 \begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module}. \end{DoxyCompactList}\item 
-\hyperlink{classLaneDetectionModule_abe9179d4df794c39d6fe246ad7a0d64e}{$\sim$\+Lane\+Detection\+Module} ()\hypertarget{classLaneDetectionModule_abe9179d4df794c39d6fe246ad7a0d64e}{}\label{classLaneDetectionModule_abe9179d4df794c39d6fe246ad7a0d64e}
-
+\hyperlink{classLaneDetectionModule_abe9179d4df794c39d6fe246ad7a0d64e}{$\sim$\+Lane\+Detection\+Module} ()
 \begin{DoxyCompactList}\small\item\em Default destructor for \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module}. \end{DoxyCompactList}\item 
 void \hyperlink{classLaneDetectionModule_aff46b8eb6123f639c84eabb574f03241}{undistort\+Image} (const cv\+::\+Mat \&src, cv\+::\+Mat \&dst)
 \begin{DoxyCompactList}\small\item\em Method Undistortedimage for \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module}. \end{DoxyCompactList}\item 
@@ -45,6 +52,50 @@ int \hyperlink{classLaneDetectionModule_a51c717f41ad97457213bbe2a079f3ece}{get\+
 \begin{DoxyCompactList}\small\item\em Method get\+Gray\+Scale\+Min is to use get min value of Gray\+Scale for \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module}. \end{DoxyCompactList}\item 
 int \hyperlink{classLaneDetectionModule_a886adf9d2fdfac6f6f4794cb327ea73c}{get\+Gray\+Scale\+Max} ()
 \begin{DoxyCompactList}\small\item\em Method get\+Gray\+Scale\+Max is to use get max value of Gray\+Scale for \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module} \hyperlink{classLane}{Lane} detection module for self driving cars. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
+\index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
+\subsubsection[{\texorpdfstring{Lane\+Detection\+Module()}{LaneDetectionModule()}}]{\setlength{\rightskip}{0pt plus 5cm}Lane\+Detection\+Module\+::\+Lane\+Detection\+Module (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classLaneDetectionModule_a044d95cfc95e4dba1c96ee62c50b6df6}{}\label{classLaneDetectionModule_a044d95cfc95e4dba1c96ee62c50b6df6}
+
+
+Default constructor for \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!````~Lane\+Detection\+Module@{$\sim$\+Lane\+Detection\+Module}}
+\index{````~Lane\+Detection\+Module@{$\sim$\+Lane\+Detection\+Module}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
+\subsubsection[{\texorpdfstring{$\sim$\+Lane\+Detection\+Module()}{~LaneDetectionModule()}}]{\setlength{\rightskip}{0pt plus 5cm}Lane\+Detection\+Module\+::$\sim$\+Lane\+Detection\+Module (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classLaneDetectionModule_abe9179d4df794c39d6fe246ad7a0d64e}{}\label{classLaneDetectionModule_abe9179d4df794c39d6fe246ad7a0d64e}
+
+
+Default destructor for \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
 
 
 \subsection{Member Function Documentation}
@@ -92,9 +143,12 @@ Method display\+Output to calculate to display of the system for \hyperlink{clas
 \hline
 {\em lane2} & object of class lane to store line characteristic \\
 \hline
-{\em inv} & is the inverse perspective transformation matrix \\
+{\em inv} & is the inverse perspective transformation matrix\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!extract\+Lanes@{extract\+Lanes}}
 \index{extract\+Lanes@{extract\+Lanes}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
 \subsubsection[{\texorpdfstring{extract\+Lanes(const cv\+::\+Mat \&src, cv\+::\+Mat \&dst, Lane \&lane1, Lane \&lane2, int curve\+Flag)}{extractLanes(const cv::Mat &src, cv::Mat &dst, Lane &lane1, Lane &lane2, int curveFlag)}}]{\setlength{\rightskip}{0pt plus 5cm}void Lane\+Detection\+Module\+::extract\+Lanes (
@@ -120,9 +174,12 @@ Method extract\+Lanes to calculate parameters of lines and its characteristics f
 \hline
 {\em lane2} & object of class lane to store line characteristic \\
 \hline
-{\em curve\+Flag} & to set degree of curve \\
+{\em curve\+Flag} & to set degree of curve\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!extract\+R\+OI@{extract\+R\+OI}}
 \index{extract\+R\+OI@{extract\+R\+OI}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
 \subsubsection[{\texorpdfstring{extract\+R\+O\+I(const cv\+::\+Mat \&src, cv\+::\+Mat \&dst)}{extractROI(const cv::Mat &src, cv::Mat &dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void Lane\+Detection\+Module\+::extract\+R\+OI (
@@ -139,9 +196,12 @@ Method extract\+R\+OI to set region of interest for \hyperlink{classLaneDetectio
 \begin{DoxyParams}{Parameters}
 {\em src} & is a Matrix of source of image \\
 \hline
-{\em dst} & is a Matrix of destination of image \\
+{\em dst} & is a Matrix of destination of image\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!fit\+Poly@{fit\+Poly}}
 \index{fit\+Poly@{fit\+Poly}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
 \subsubsection[{\texorpdfstring{fit\+Poly(const std\+::vector$<$ cv\+::\+Point $>$ \&src, cv\+::\+Mat \&dst, int order)}{fitPoly(const std::vector< cv::Point > &src, cv::Mat &dst, int order)}}]{\setlength{\rightskip}{0pt plus 5cm}void Lane\+Detection\+Module\+::fit\+Poly (
@@ -161,9 +221,12 @@ Method fit\+Poly fits a 2nd order polynomial to the points on the lane.
 \hline
 {\em dst} & is the destination Mat to store the coefficients of the polynomial \\
 \hline
-{\em order} & is the order of polynomial \\
+{\em order} & is the order of polynomial\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!get\+Drive\+Heading@{get\+Drive\+Heading}}
 \index{get\+Drive\+Heading@{get\+Drive\+Heading}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
 \subsubsection[{\texorpdfstring{get\+Drive\+Heading(\+Lane \&lane1, Lane \&lane2, std\+::string \&direction)}{getDriveHeading(Lane &lane1, Lane &lane2, std::string &direction)}}]{\setlength{\rightskip}{0pt plus 5cm}double Lane\+Detection\+Module\+::get\+Drive\+Heading (
@@ -200,6 +263,11 @@ value of drive head.
 
 Method get\+Gray\+Scale\+Max is to use get max value of Gray\+Scale for \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module}. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 int of max Gray\+Scale values 
 \end{DoxyReturn}
@@ -214,6 +282,11 @@ int of max Gray\+Scale values
 
 Method get\+Gray\+Scale\+Min is to use get min value of Gray\+Scale for \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module}. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 int of min Gray\+Scale value 
 \end{DoxyReturn}
@@ -228,6 +301,11 @@ int of min Gray\+Scale value
 
 Method get\+Yellow\+Max is to use get H\+SL max value of yellow for \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module}. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 H\+SL values for yellow lane. 
 \end{DoxyReturn}
@@ -242,6 +320,11 @@ H\+SL values for yellow lane.
 
 Method get\+Yellow\+Min is to use get H\+SL min value of yellow for \hyperlink{classLaneDetectionModule}{Lane\+Detection\+Module}. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 H\+SL values for yellow lane. 
 \end{DoxyReturn}
@@ -258,9 +341,12 @@ Method set\+Gray\+Scale\+Max is to use set max value of Gray scale value for \hy
 
 
 \begin{DoxyParams}{Parameters}
-{\em int} & of max Gray\+Scale value. \\
+{\em int} & of max Gray\+Scale value.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!set\+Gray\+Scale\+Min@{set\+Gray\+Scale\+Min}}
 \index{set\+Gray\+Scale\+Min@{set\+Gray\+Scale\+Min}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
 \subsubsection[{\texorpdfstring{set\+Gray\+Scale\+Min(int value)}{setGrayScaleMin(int value)}}]{\setlength{\rightskip}{0pt plus 5cm}void Lane\+Detection\+Module\+::set\+Gray\+Scale\+Min (
@@ -274,9 +360,12 @@ Method set\+Gray\+Scale\+Min is to use set min value of Gray scale value for \hy
 
 
 \begin{DoxyParams}{Parameters}
-{\em int} & of min Gray\+Scale value \\
+{\em int} & of min Gray\+Scale value\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!set\+Yellow\+Max@{set\+Yellow\+Max}}
 \index{set\+Yellow\+Max@{set\+Yellow\+Max}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
 \subsubsection[{\texorpdfstring{set\+Yellow\+Max(cv\+::\+Scalar value)}{setYellowMax(cv::Scalar value)}}]{\setlength{\rightskip}{0pt plus 5cm}void Lane\+Detection\+Module\+::set\+Yellow\+Max (
@@ -290,9 +379,12 @@ Method set\+Yellow\+Max is to use set H\+SL max value of yellow for \hyperlink{c
 
 
 \begin{DoxyParams}{Parameters}
-{\em H\+SL} & values for yellow lane \\
+{\em H\+SL} & values for yellow lane\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!set\+Yellow\+Min@{set\+Yellow\+Min}}
 \index{set\+Yellow\+Min@{set\+Yellow\+Min}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
 \subsubsection[{\texorpdfstring{set\+Yellow\+Min(cv\+::\+Scalar value)}{setYellowMin(cv::Scalar value)}}]{\setlength{\rightskip}{0pt plus 5cm}void Lane\+Detection\+Module\+::set\+Yellow\+Min (
@@ -306,9 +398,12 @@ Method set\+Yellow\+Min is to use set min value of yellow for \hyperlink{classLa
 
 
 \begin{DoxyParams}{Parameters}
-{\em H\+SL} & values for yellow lane. \\
+{\em H\+SL} & values for yellow lane.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!threshold\+ImageW@{threshold\+ImageW}}
 \index{threshold\+ImageW@{threshold\+ImageW}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
 \subsubsection[{\texorpdfstring{threshold\+Image\+W(const cv\+::\+Mat \&src, cv\+::\+Mat \&dst)}{thresholdImageW(const cv::Mat &src, cv::Mat &dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void Lane\+Detection\+Module\+::threshold\+ImageW (
@@ -325,9 +420,12 @@ Method threshold\+ImageW to set white threshold image for \hyperlink{classLaneDe
 \begin{DoxyParams}{Parameters}
 {\em src} & is a Matrix of source of image \\
 \hline
-{\em dst} & is a Matrix of destination of image \\
+{\em dst} & is a Matrix of destination of image\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!threshold\+ImageY@{threshold\+ImageY}}
 \index{threshold\+ImageY@{threshold\+ImageY}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
 \subsubsection[{\texorpdfstring{threshold\+Image\+Y(const cv\+::\+Mat \&src, cv\+::\+Mat \&dst)}{thresholdImageY(const cv::Mat &src, cv::Mat &dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void Lane\+Detection\+Module\+::threshold\+ImageY (
@@ -344,9 +442,12 @@ Method threshold\+ImageY to set yellow threshold image for \hyperlink{classLaneD
 \begin{DoxyParams}{Parameters}
 {\em src} & is a Matrix of source of image \\
 \hline
-{\em dst} & is a Matrix of destination of imageg \\
+{\em dst} & is a Matrix of destination of image\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!transform\+Perspective@{transform\+Perspective}}
 \index{transform\+Perspective@{transform\+Perspective}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
 \subsubsection[{\texorpdfstring{transform\+Perspective(const cv\+::\+Mat \&src, cv\+::\+Mat \&dst, cv\+::\+Mat \&\+Tm, cv\+::\+Mat \&inv\+Tm)}{transformPerspective(const cv::Mat &src, cv::Mat &dst, cv::Mat &Tm, cv::Mat &invTm)}}]{\setlength{\rightskip}{0pt plus 5cm}void Lane\+Detection\+Module\+::transform\+Perspective (
@@ -369,9 +470,12 @@ Method transforming perspective of lane image.
 \hline
 {\em Tm} & is the transformation matrix for perspective \\
 \hline
-{\em inv\+Tm} & is the inverse of the transformation matrix \\
+{\em inv\+Tm} & is the inverse of the transformation matrix\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \index{Lane\+Detection\+Module@{Lane\+Detection\+Module}!undistort\+Image@{undistort\+Image}}
 \index{undistort\+Image@{undistort\+Image}!Lane\+Detection\+Module@{Lane\+Detection\+Module}}
 \subsubsection[{\texorpdfstring{undistort\+Image(const cv\+::\+Mat \&src, cv\+::\+Mat \&dst)}{undistortImage(const cv::Mat &src, cv::Mat &dst)}}]{\setlength{\rightskip}{0pt plus 5cm}void Lane\+Detection\+Module\+::undistort\+Image (
@@ -388,11 +492,14 @@ Method Undistortedimage for \hyperlink{classLaneDetectionModule}{Lane\+Detection
 \begin{DoxyParams}{Parameters}
 {\em src} & is a Matrix of source of image \\
 \hline
-{\em dst} & is a Matrix of destination of image \\
+{\em dst} & is a Matrix of destination of image\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/hbk/\+Desktop/\+Software\+Development/\+Traffic\+\_\+\+Lane\+\_\+\+Detection/include/Lane\+Detection\+Module.\+hpp\end{DoxyCompactItemize}
+/home/rohit/\+E\+N\+P\+M808\+X/extracredit final/\+Traffic\+\_\+\+Lane\+\_\+\+Detection/include/Lane\+Detection\+Module.\+hpp\end{DoxyCompactItemize}

@@ -1,46 +1,85 @@
 \hypertarget{classLane}{}\section{Lane Class Reference}
 \label{classLane}\index{Lane@{Lane}}
+
+
+Class \hyperlink{classLane}{Lane} \hyperlink{classLane}{Lane} for storing parameters of lane.  
+
+
+
+
+{\ttfamily \#include $<$Lane.\+hpp$>$}
+
+
+
+Inheritance diagram for Lane\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{classLane__inherit__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classLane_affd642d537d96c03cb7fe8c8d46d37b4}{Lane} ()\hypertarget{classLane_affd642d537d96c03cb7fe8c8d46d37b4}{}\label{classLane_affd642d537d96c03cb7fe8c8d46d37b4}
-
+\hyperlink{classLane_affd642d537d96c03cb7fe8c8d46d37b4}{Lane} ()
 \begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{classLane}{Lane} with ployorder,colour,poly\+Coeff,start\+Coordinate,status random values. \end{DoxyCompactList}\item 
 \hyperlink{classLane_a7dac966c4a38ff5440e70b2be72aa5ac}{Lane} (int poly\+Order, std\+::string color, int averaging\+Count)
 \begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{classLane}{Lane} with ployorder,colour,poly\+Coeff,start\+Coordinate,status random values. \end{DoxyCompactList}\item 
-\hyperlink{classLane_a1c023c4eca02fb9a52365b7f6c04d7d4}{$\sim$\+Lane} ()\hypertarget{classLane_a1c023c4eca02fb9a52365b7f6c04d7d4}{}\label{classLane_a1c023c4eca02fb9a52365b7f6c04d7d4}
-
+virtual \hyperlink{classLane_afa3175d83b754b60cc0a93f26accb5ad}{$\sim$\+Lane} ()
 \begin{DoxyCompactList}\small\item\em Default destructor for \hyperlink{classLane}{Lane} class. \end{DoxyCompactList}\item 
-int {\bfseries get\+Stable\+Center} (int coordinate)\hypertarget{classLane_a6e8a964eef75687d6c18d847e87dd938}{}\label{classLane_a6e8a964eef75687d6c18d847e87dd938}
+virtual int {\bfseries get\+Stable\+Center} (int coordinate)\hypertarget{classLane_ac01d392e49e9670619a2b96fa44fecb5}{}\label{classLane_ac01d392e49e9670619a2b96fa44fecb5}
 
 \item 
-void {\bfseries set\+Start\+Coordinate} (cv\+::\+Point point)\hypertarget{classLane_a33adbdc77bb6c4bcaaec18cfcc1ab3d2}{}\label{classLane_a33adbdc77bb6c4bcaaec18cfcc1ab3d2}
+virtual void {\bfseries set\+Start\+Coordinate} (cv\+::\+Point point)\hypertarget{classLane_aba443bb3b0c099251452bb1af50eb9d0}{}\label{classLane_aba443bb3b0c099251452bb1af50eb9d0}
 
 \item 
-cv\+::\+Point {\bfseries get\+Start\+Coordinate} ()\hypertarget{classLane_adb05103858eddf69b9f9edcf667ae92e}{}\label{classLane_adb05103858eddf69b9f9edcf667ae92e}
+virtual cv\+::\+Point {\bfseries get\+Start\+Coordinate} ()\hypertarget{classLane_aff2f8fddf9cc5dce9c8213cc2e753985}{}\label{classLane_aff2f8fddf9cc5dce9c8213cc2e753985}
 
 \item 
-void {\bfseries set\+Status} (bool flag)\hypertarget{classLane_a826f43f6b4512ed0022c1b2d156eef9f}{}\label{classLane_a826f43f6b4512ed0022c1b2d156eef9f}
+virtual void {\bfseries set\+Status} (bool flag)\hypertarget{classLane_af24e848d029b62c024586e305f38b8c9}{}\label{classLane_af24e848d029b62c024586e305f38b8c9}
 
 \item 
-bool {\bfseries get\+Status} ()\hypertarget{classLane_a98690f0b93988f8c8fd58d3035b6c483}{}\label{classLane_a98690f0b93988f8c8fd58d3035b6c483}
+virtual bool {\bfseries get\+Status} ()\hypertarget{classLane_a30d25498948672ea094316de8d34431f}{}\label{classLane_a30d25498948672ea094316de8d34431f}
 
 \item 
-void {\bfseries set\+Poly\+Order} (int value)\hypertarget{classLane_a8b15e2745d2634cd0b2d7a65e5310892}{}\label{classLane_a8b15e2745d2634cd0b2d7a65e5310892}
+virtual void {\bfseries set\+Poly\+Order} (int value)\hypertarget{classLane_af9cb6e69108e57ca4bbd6a1903cbf9cd}{}\label{classLane_af9cb6e69108e57ca4bbd6a1903cbf9cd}
 
 \item 
-int {\bfseries get\+Poly\+Order} ()\hypertarget{classLane_ac0ff2db58a40689bc842edb120740632}{}\label{classLane_ac0ff2db58a40689bc842edb120740632}
+virtual int {\bfseries get\+Poly\+Order} ()\hypertarget{classLane_a381210c41ad5dfcb391f2e7bdb381b2f}{}\label{classLane_a381210c41ad5dfcb391f2e7bdb381b2f}
 
 \item 
-void {\bfseries set\+Poly\+Coeff} (cv\+::\+Mat coeff)\hypertarget{classLane_a992415d3df4ed98dec71f5b5002becd7}{}\label{classLane_a992415d3df4ed98dec71f5b5002becd7}
+virtual void {\bfseries set\+Poly\+Coeff} (cv\+::\+Mat coeff)\hypertarget{classLane_a3afadbe1c61dff2e770d6d36c243b366}{}\label{classLane_a3afadbe1c61dff2e770d6d36c243b366}
 
 \item 
-std\+::vector$<$ float $>$ {\bfseries get\+Poly\+Coeff} ()\hypertarget{classLane_a4a433e238260f9464af03611c2a3d1ce}{}\label{classLane_a4a433e238260f9464af03611c2a3d1ce}
+virtual std\+::vector$<$ float $>$ {\bfseries get\+Poly\+Coeff} ()\hypertarget{classLane_a14e1f6ba0ef2d98581ec9c308ec37589}{}\label{classLane_a14e1f6ba0ef2d98581ec9c308ec37589}
 
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+Class \hyperlink{classLane}{Lane} \hyperlink{classLane}{Lane} for storing parameters of lane. 
+
 \subsection{Constructor \& Destructor Documentation}
+\index{Lane@{Lane}!Lane@{Lane}}
+\index{Lane@{Lane}!Lane@{Lane}}
+\subsubsection[{\texorpdfstring{Lane()}{Lane()}}]{\setlength{\rightskip}{0pt plus 5cm}Lane\+::\+Lane (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classLane_affd642d537d96c03cb7fe8c8d46d37b4}{}\label{classLane_affd642d537d96c03cb7fe8c8d46d37b4}
+
+
+Default constructor for \hyperlink{classLane}{Lane} with ployorder,colour,poly\+Coeff,start\+Coordinate,status random values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
 \index{Lane@{Lane}!Lane@{Lane}}
 \index{Lane@{Lane}!Lane@{Lane}}
 \subsubsection[{\texorpdfstring{Lane(int poly\+Order, std\+::string color, int averaging\+Count)}{Lane(int polyOrder, std::string color, int averagingCount)}}]{\setlength{\rightskip}{0pt plus 5cm}Lane\+::\+Lane (
@@ -60,11 +99,33 @@ Default constructor for \hyperlink{classLane}{Lane} with ployorder,colour,poly\+
 \hline
 {\em color} & is the color of lane \\
 \hline
-{\em averaging\+Count} & number of values to average \\
+{\em averaging\+Count} & number of values to average\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{Lane@{Lane}!````~Lane@{$\sim$\+Lane}}
+\index{````~Lane@{$\sim$\+Lane}!Lane@{Lane}}
+\subsubsection[{\texorpdfstring{$\sim$\+Lane()}{~Lane()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual Lane\+::$\sim$\+Lane (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classLane_afa3175d83b754b60cc0a93f26accb5ad}{}\label{classLane_afa3175d83b754b60cc0a93f26accb5ad}
+
+
+Default destructor for \hyperlink{classLane}{Lane} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/hbk/\+Desktop/\+Software\+Development/\+Traffic\+\_\+\+Lane\+\_\+\+Detection/include/\hyperlink{Lane_8hpp}{Lane.\+hpp}\end{DoxyCompactItemize}
+/home/rohit/\+E\+N\+P\+M808\+X/extracredit final/\+Traffic\+\_\+\+Lane\+\_\+\+Detection/include/\hyperlink{Lane_8hpp}{Lane.\+hpp}\end{DoxyCompactItemize}
