@@ -96,6 +96,47 @@ class LaneMock : public Lane {
   MOCK_METHOD0(getPolyCoeff, std::vector<float>());
 };
 
+/*
+ * @brief Class LaneDetectionModuleTest
+ *
+ * Helps to SetUp and Tear-down before and after test for
+ * similar tests.
+ */
+class driveHeadingTest : public ::testing::Test {
+ public:
+  // LaneDetectionModule module object
+  LaneDetectionModule laneModule;
+
+  // Create mock lane objects for left and right lane.
+  // Status is set to false on initialization
+  LaneMock left { 2, "red", 10 };
+  LaneMock right { 2, "green", 10 };
+
+  // Create variables to store direction and slope
+  std::string direction;
+
+  /**
+   *  @brief Setup Function used during tests
+   *
+   *  @param none
+   *
+   *  @return void
+   */
+  void SetUp() {
+  }
+
+  /**
+   *  @brief Teardown function used during tests
+   *
+   *  @param none
+   *
+   *  @return void
+   */
+  void TearDown() {
+  }
+};
+
+
 /**
  *@brief Test drive heading function in LaneDetectionModule
  *       by mocking getStatus function
@@ -105,18 +146,7 @@ class LaneMock : public Lane {
  *
  *@return none
  */
-TEST(driveHeadingTest, mockGetStatusTest) {
-  // Create mock lane objects for left and right lane.
-  // Status is set to false on initialization
-  LaneMock left(2, "red", 10);
-  LaneMock right(2, "green", 10);
-
-  // LaneDetectionModule module object
-  LaneDetectionModule laneModule;
-
-  // Create variables to store direction and slope
-  std::string direction;
-
+TEST_F(driveHeadingTest, mockGetStatusTest) {
   // We only check the right lane as if that is false, the other
   // getStatus for left lane is not evaluated.
   EXPECT_CALL(right, getStatus()).Times(1).WillOnce(Return(false));
@@ -135,18 +165,7 @@ TEST(driveHeadingTest, mockGetStatusTest) {
  *
  *@return none
  */
-TEST(driveHeadingTest, mockGetPolyCoeffTest) {
-  // Create mock lane objects for left and right lane.
-  // Status is set to false on initialization
-  LaneMock left(2, "red", 10);
-  LaneMock right(2, "green", 10);
-
-  // LaneDetectionModule module object
-  LaneDetectionModule laneModule;
-
-  // Create variables to store direction and slope
-  std::string direction;
-
+TEST_F(driveHeadingTest, mockGetPolyCoeffTest) {
   // Set the polynomial coefficients
   std::vector<float> testLaneCoeff;
   testLaneCoeff.push_back(175.535);
